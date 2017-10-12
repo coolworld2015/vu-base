@@ -1,13 +1,9 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource);
-
-import Router from 'vue-router'
-
-import Test2 from '@/components/Test2'
-import Payments from '@/components/Payments'
-
+import Vue from 'vue';
+import Router from 'vue-router';
 Vue.use(Router);
+
+import Test2 from '@/components/Test2';
+import Payments from '@/components/Payments';
 
 export default new Router({
   routes: [
