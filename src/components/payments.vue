@@ -5,7 +5,7 @@
 	  <main>
 	    <section class="search-results">
           <div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-            Касова книга
+            Payments
           </div>
         </section>
       </main>
@@ -14,10 +14,9 @@
 
 <script>
 import navbar from '@/components/navbar'
-import appConfig from '../main'
 
 export default {
-  name: 'test',
+  name: 'payments',
   data () {
     return {
       msg: 'test'
