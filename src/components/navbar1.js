@@ -1,13 +1,15 @@
-<template>
- <div class="wrapper">
-   <aside class="navigation-sidebar" v-bind:class="{ shown: isActive }">
+export default {
+  name: 'navbar',		
+ 
+			template: ` <aside class="navigation-sidebar" v-bind:class="{ shown: isActive }">
 							<nav class="h-100 fp-navbar" onclick="event.preventDefault();return false">
  
  
 										
  
 								<ul class="h-100 fp-nav-right">
-									  
+									 
+										<img src="./assets/logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()" /> 
 										 
 									 
 									<li class="fp-nav-item fp-nav-item-right">
@@ -86,42 +88,115 @@
 									</li>
 								</ul>
 							</nav>
-						</aside></div>
-</template>
+						</aside>`,
+		
+			data: function () {
+			  return {
+				searchQuery: '',
+				//route: appConfig.route,
+				route: 'Test5',
+				isActive: false,
+				payments: null,
+				phones: null,
+				audit: null,
+				users: null,
+				test: null,
+				test1: null,
+				test2: null,
+				test3: null,
+				test4: null,
+				test5: null,
+			  }
+			},
+			created() {
+				//console.log('appConfig ' + appConfig.route);
+				this.init();
+			},	
+			methods: {
+				init() {								
+					if (this.route == 'Payments') {
+						this.payments = true;
+					} else {
+						this.payments = false;
+					}					
+					
+					if (this.route == 'Phones') {
+						this.phones = true;
+					} else {
+						this.phones = false;
+					}
+					
+					if (this.route == 'Audit') {
+						this.audit = true;
+					} else {
+						this.audit = false;
+					}		
+					
+					if (this.route == 'Users') {
+						this.users = true;
+					} else {
+						this.users = false;
+					}				
+					
+					if (this.route == 'Test') {
+						this.test = true;
+					} else {
+						this.test = false;
+					}					
+					
+					if (this.route == 'Test1') {
+						this.test1 = true;
+					} else {
+						this.test1 = false;
+					}				
+					
+					if (this.route == 'Test2') {
+						this.test2 = true;
+					} else {
+						this.test2 = false;
+					}					
+					
+					if (this.route == 'Test3') {
+						this.test3 = true;
+					} else {
+						this.test3 = false;
+					}			
+					
+					if (this.route == 'Test4') {
+						this.test4 = true;
+					} else {
+						this.test4 = false;
+					}					
+					
+					if (this.route == 'Test5') {
+						this.test5 = true;
+					} else {
+						this.test5 = false;
+					}					
 
-<script>
-import navbar from '@/components/Navbar'
 
-export default {
-  name: 'payments',
-  data () {
-    return {
-      msg: 'test'
-    }
-  },
-	components: {
-		navbar
-	}
-}
-</script>
+				},				
+				changeView() {
+					console.log(this.route)
+					
+					if (this.isActive !== false) {
+						this.isActive = false;
+					}
+					else {
+						this.isActive = true;
+					}
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+				},
+				searchClear() {
+					this.searchQuery = '';
+					bus.$emit('searchQuery', this.searchQuery);
+				},
+				changeRoute(route) {
+					event.preventDefault();
+					console.log(route);
+					//this.$router.push({ path: route});
+					this.$router.push('/' + route);
+					return false;
+				}
+			}
+		}

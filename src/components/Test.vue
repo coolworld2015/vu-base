@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import navbar from '@/components/Navbar'
+import navbar from '@/components/navbar'
 
 export default {
   name: 'test',
