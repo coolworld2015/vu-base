@@ -9,7 +9,7 @@ export default {
  
 								<ul class="h-100 fp-nav-right">
 									 
-										<img src="logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()"> 
+										<img src="./assets/logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()"> 
 										 
 									 
 									<li class="fp-nav-item fp-nav-item-right">
@@ -93,7 +93,8 @@ export default {
 			data: function () {
 			  return {
 				searchQuery: '',
-				route: appConfig.route,
+				//route: appConfig.route,
+				route: 'Test5',
 				isActive: false,
 				payments: null,
 				phones: null,
@@ -108,7 +109,7 @@ export default {
 			  }
 			},
 			created() {
-				console.log('appConfig ' + appConfig.route);
+				//console.log('appConfig ' + appConfig.route);
 				this.init();
 			},	
 			methods: {

@@ -9,7 +9,10 @@ require('./assets/css/bootstrap.css')
 require('./assets/css/style.css')
 
 Vue.config.productionTip = false
+
 const appConfig = new Vue();
+appConfig.route = 'Test';
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
