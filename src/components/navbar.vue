@@ -107,12 +107,11 @@ export default {
 			  }
 			},
 			created() {
-				console.log('appConfig ' + appConfig.route);
+				//console.log('appConfig ' + appConfig.route);
 				this.init();
 			},	
 			methods: {
-				init() {
-				console.log('this.route ' + this.route);				
+				init() {			
 					if (this.route == 'Payments') {
 						this.payments = true;
 					} else {
@@ -192,7 +191,6 @@ export default {
 				},
 				changeRoute(route) {
 					event.preventDefault();
-					console.log(route);
 					//this.$router.push({ path: route});
 					this.$router.push('/' + route);
 					return false;

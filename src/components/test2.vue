@@ -5,7 +5,7 @@
 	  <main>
 	    <section class="search-results">
           <div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-            Касова книга
+            Cash2Card
           </div>
         </section>
       </main>
