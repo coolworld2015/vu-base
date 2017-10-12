@@ -111,7 +111,8 @@ export default {
 				this.init();
 			},	
 			methods: {
-				init() {								
+				init() {
+				console.log('this.route ' + this.route);				
 					if (this.route == 'Payments') {
 						this.payments = true;
 					} else {

@@ -13,16 +13,19 @@
 </template>
 
 <script>
-import navbar from '@/components/navbar'
-import appConfig from '../main'
+import navbar from '@/components/navbar';
+import appConfig from '../main';
 
 export default {
   name: 'test',
   data () {
     return {
-      msg: 'test'
+      route: 'Test2'
     }
   },
+	created() {
+		appConfig.route = this.route;			
+	},
 	components: {
 		navbar
 	}
