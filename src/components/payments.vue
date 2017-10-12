@@ -4,12 +4,13 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					<div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-						xxxx<paymentsItems></paymentsItems>
-					</div>
+					 
+					<payments-items></payments-items>
 				</section>
+				 
 			</main>
 		</div>
+
 	</div>
 </template>
 
