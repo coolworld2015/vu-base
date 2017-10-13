@@ -1,11 +1,11 @@
 <template>
-	<div v-if="loading">
+	<div v-if="status === 'loading'">
 		<div style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-             <img src="../../assets/loading.gif">
+			 <img src="../../assets/loading.gif">
 		</div>
 	</div>
-	
-	<div class="search-results-content" v-else>
+
+	<div v-else-if="status === 'show'" class="search-results-content">
 		<div class="payment" v-for="item in items" v-bind:class="{ selected: clicked }" v-on:click="showDetails(item)">
 			<div class="search-results-item search-results-choose"><span class="circle"></span></div>
 			<div class="search-results-item search-results-sender">{{ item.name }}</div>
@@ -25,6 +25,12 @@
 			<div class="search-results-item search-results-other">...</div>
 		</div>
 	</div>
+
+	<div v-else-if="status === 'error'">
+ 		<div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; color: red; font-weight: bold; font-size:24px">
+             Something went wrong...
+		</div>
+	</div>	
 </template>
 
 <script>
@@ -37,7 +43,7 @@ export default {
 	  return {
 		items: [],
 		filteredItems: [],
-		loading: true,
+		status: 'loading',
 		clicked: false
 	  }
 	},
@@ -51,8 +57,10 @@ export default {
 				.then(result => {
 					this.items = result.data.sort(this.sort);
 					this.filteredItems = result.data.sort(this.sort);
-					this.loading = false;
-					bus.$emit('itemsCount', result.data.length);
+					this.status = 'show';
+					//bus.$emit('itemsCount', result.data.length);
+				}).catch((error)=> {
+					this.status = 'error';
 				})
 		},
 		onItem(item) {
