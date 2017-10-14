@@ -84,7 +84,6 @@ export default {
 		},			
 		showDetails(item){
 			appConfig.user = item;
-			console.log(appConfig.user);
 			this.$router.push('user-edit');
 		},
 		sort(a, b) {
