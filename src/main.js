@@ -7,10 +7,9 @@ Vue.use(VueResource);
 import App from './App';
 import router from './router';
 
-require('./assets/css/bootstrap.css')
-// require('./assets/css/font-awesome.min.css')
-require('./assets/css/style.css')
-
+import './assets/css/bootstrap.css'
+import './assets/css/style.css'
+import './assets/css/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const appConfig = new Vue();
 appConfig.route = 'Payments';
