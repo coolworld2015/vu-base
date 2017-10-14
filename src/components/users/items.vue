@@ -28,7 +28,7 @@
 
 	<div v-else-if="status === 'error'">
  		<div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; color: red; font-weight: bold; font-size:24px">
-             Something went wrong...
+             Something went wrong
 		</div>
 	</div>	
 </template>
@@ -81,20 +81,11 @@ export default {
 			}
 			//console.log(item.id);
 			//this.clicked = true;
-		},
-		onChangeText(e) {
-			var text = appConfig.searchQuery;
-			var arr = [].concat(this.state.filteredItems);
-			//var items = arr.filter((el) => el.cashdesk_system_id.toLowerCase().indexOf(text.toLowerCase()) != -1);
-			this.items = items;
-		},
-		showItem(item){
-			this.$router.push({ path: '/user-item/' + item.id + '/' + item.name + '/' + item.pass + '/' + item.description });
-		},				
+		},			
 		showDetails(item){
-			appConfig.payment = item;
-			console.log(appConfig.payment);
-			this.$router.push('payment-edit');
+			appConfig.user = item;
+			console.log(appConfig.user);
+			this.$router.push('user-edit');
 		},
 		sort(a, b) {
 			let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
