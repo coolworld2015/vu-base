@@ -4,7 +4,7 @@
 			<span class="selected-payments" id="activatedPaymentsBox" style="width: 44px;">{{ count }}</span>
 			Платежів
 		</div>
-		<div class="activated-payments-item">
+		<div class="activated-payments-item" v-on:click="addItem">
 			<button class="" id="cancelSelection">
 				<svg class="activated-payments-svg"><use xlink:href="#cancel"></use></svg>
 				Відмінити
@@ -47,6 +47,11 @@ export default {
 		appConfig.$on('itemsCount', itemsCount => {
 			this.count = itemsCount;
 		})			
+	},
+	methods: {		
+		addItem(){
+			this.$router.push('user-add');
+		}	
 	}
 }
 </script>

@@ -4,7 +4,7 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					<user-form-edit></user-form-edit>
+					<user-form-add></user-form-add>
 				</section>
 			</main>
 		</div>
@@ -13,13 +13,13 @@
 
 <script>
 import navbar from '@/components/navbar';
-import userFormEdit from '@/components/users/form-edit';
+import userFormAdd from '@/components/users/form-add';
 
 export default {
-	name: 'user-edit',
+	name: 'user-add',
 	components: {
 		navbar:	navbar,
-		userFormEdit: userFormEdit
+		userFormAdd: userFormAdd
 	}
 }
 </script>

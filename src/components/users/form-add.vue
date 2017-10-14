@@ -20,14 +20,14 @@
 					</div>
 					<div class="form-group">
 						<label for="senderName">Ім'я</label>
-						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="name">
+						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="pass">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть ім'я відправника.
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="senderPatronymic">По-батькові</label>
-						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="name">
+						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="description">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть по-батькові відправника.
 						</div>
@@ -177,7 +177,7 @@
 		</form>	
 		<div class="form-info">
 			<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
-			<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
+			<button class="btn btn-danger" type="submit" v-on:click="addItem">Відправити</button>
 		</div>
 	</div>
 </template>
@@ -185,23 +185,20 @@
 <script>
 import appConfig from '../../main';
 import navbar from '@/components/navbar';
-import usersForm from '@/components/users/form';
 
 export default {
-	name: 'users-edit',
+	name: 'users-add',
 	data() {
 		return {
 			name: '',
+			pass: '',
+			description: '',
 			amount: '',
 			loading: false
 		}
 	},
 	created() {
-		if (!appConfig.user) {
-			this.$router.push('/users');
-		} else {
-			this.setData();
-		}
+ 
 	},
 	methods: {
 		setData() {
@@ -217,10 +214,10 @@ export default {
 		goBack() {
 			this.$router.push('/users');
 		},
-		updateItem() {
+		addItem() {
 			this.loading = true;
-			this.$http.post('https://ui-base.herokuapp.com/api/users/update', {                
-					id: this.id,
+			this.$http.post('https://ui-base.herokuapp.com/api/users/add', {                
+					id: +new Date,
 					name: this.name,
 					pass: this.pass,
 					description: this.description})

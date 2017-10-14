@@ -6,6 +6,7 @@ import Test2 from '@/components/Test2';
 import Payments from '@/components/Payments';
 import Users from '@/components/users/Users';
 import UserEdit from '@/components/users/edit';
+import UserAdd from '@/components/users/add';
 
 export default new Router({
   routes: [
@@ -14,5 +15,6 @@ export default new Router({
     { path: '/payments', component: Payments },
     { path: '/users', component: Users },
     { path: '/user-edit', component: UserEdit },
+    { path: '/user-add', component: UserAdd },
   ]
 })
