@@ -49,7 +49,17 @@ export default {
 	},
 	created() {
 		this.fetchData();
- 
+		appConfig.$on('searchQuery', searchQuery => {
+			this.searchQuery = searchQuery;
+			var arr = [].concat(this.filteredItems);
+			var items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+			this.items = items;
+			appConfig.$emit('itemsCount', items.length);
+			
+			if (searchQuery == '') {
+				this.items = this.filteredItems;
+			}
+		})
 	},
 	methods: {
 		fetchData() {
@@ -58,7 +68,7 @@ export default {
 					this.items = result.data.sort(this.sort);
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
-					//bus.$emit('itemsCount', result.data.length);
+					appConfig.$emit('itemsCount', result.data.length);
 				}).catch((error)=> {
 					this.status = 'error';
 				})
@@ -69,7 +79,7 @@ export default {
 			} else {
 				this.clicked = true;
 			}
-			console.log(item.id);
+			//console.log(item.id);
 			//this.clicked = true;
 		},
 		onChangeText(e) {

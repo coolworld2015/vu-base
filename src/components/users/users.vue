@@ -4,7 +4,7 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					 
+					<users-header></users-header> 
 					<users-items></users-items>
 				</section>
 				 
@@ -17,7 +17,8 @@
 <script>
 import appConfig from '../../main';
 import navbar from '@/components/navbar';
-import usersItems from '@/components/users/usersItems';
+import usersHeader from '@/components/users/header';
+import usersItems from '@/components/users/items';
 
 export default {
   name: 'users',
@@ -31,6 +32,7 @@ export default {
 	},
 	components: {
 		navbar:	navbar,
+		usersHeader: usersHeader,
 		usersItems: usersItems
 	}
 }
