@@ -1,5 +1,11 @@
 <template>
-	<div>
+	<div v-if="loading">
+		<div style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
+			 <img src="../../assets/img/loading.gif">
+		</div>
+	</div>
+	
+	<div v-else>
 		<form action="/" class="payment-form payment-form--create d-flex justify-content-stretch">				
 			<fieldset class="sender-data form-section-wrapper">
 				<legend>Відправник</legend>
@@ -187,6 +193,7 @@ export default {
 		return {
 			name: '',
 			amount: '',
+			loading: false
 		}
 	},
 	created() {
@@ -210,7 +217,8 @@ export default {
 		goBack() {
 			this.$router.push('/users');
 		},
-		updateItem() { 
+		updateItem() {
+			this.loading = true;
 			this.$http.post('https://ui-base.herokuapp.com/api/users/update', {                
 					id: this.id,
 					name: this.name,
