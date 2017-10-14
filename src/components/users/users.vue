@@ -7,7 +7,7 @@
 					<users-header></users-header> 
 					<users-items></users-items>
 				</section>
-				 
+				<users-footer></users-footer> 
 			</main>
 		</div>
 
@@ -19,6 +19,7 @@ import appConfig from '../../main';
 import navbar from '@/components/navbar';
 import usersHeader from '@/components/users/header';
 import usersItems from '@/components/users/items';
+import usersFooter from '@/components/users/footer';
 
 export default {
   name: 'users',
@@ -33,7 +34,8 @@ export default {
 	components: {
 		navbar:	navbar,
 		usersHeader: usersHeader,
-		usersItems: usersItems
+		usersItems: usersItems,
+		usersFooter: usersFooter
 	}
 }
 </script>

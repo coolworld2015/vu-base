@@ -1,7 +1,7 @@
 <template>
 	<div v-if="status === 'loading'">
 		<div style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-			 <img src="../../assets/loading.gif">
+			 <img src="../../assets/img/loading.gif">
 		</div>
 	</div>
 

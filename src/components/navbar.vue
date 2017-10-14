@@ -3,7 +3,7 @@
 		<nav class="h-100 fp-navbar" onclick="event.preventDefault();return false">
 			<ul class="h-100 fp-nav-right">
 				  
-				<img src="../assets/logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()" />  
+				<img src="../assets/img/logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()" />  
 				 
 				<li class="fp-nav-item fp-nav-item-right">
 					<a class="fp-nav-link menu-block-header" href="#">Платежі</a>
