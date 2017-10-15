@@ -75,7 +75,7 @@
 					<a class="fp-nav-link" href="#" title="Реєстр операцій">РО</a>
 					<span class="hot-key-hint">8</span>
 				</li>
-				<li class="fp-nav-item fp-nav-item-left li-border-bottom" v-on:click="changeRoute('test5')" v-bind:class="{ active: test5 }">
+				<li class="fp-nav-item fp-nav-item-left li-border-bottom" v-on:click="changeRoute('login')" v-bind:class="{ active: login }">
 					<a class="fp-nav-link" href="#" title="Касова книга">КК</a>
 					<span class="hot-key-hint">9</span>
 				</li>
@@ -98,6 +98,7 @@ export default {
 				phones: null,
 				audits: null,
 				users: null,
+				login: null,
 				test: null,
 				test1: null,
 				test2: null,

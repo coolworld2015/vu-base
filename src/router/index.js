@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 Vue.use(Router);
 
+import Login from '@/components/common/login';
 import Test2 from '@/components/common/test2';
 
 import Payments from '@/components/payments/payments';
@@ -20,6 +21,7 @@ import AuditsEdit from '@/components/audits/edit';
 export default new Router({
   routes: [
     { path: '/', component: Users },
+    { path: '/login', component: Login },
     { path: '/test2', component: Test2 },
 	
     { path: '/payments', component: Payments },

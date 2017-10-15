@@ -6,7 +6,7 @@
 	</div>
 	
 	<div v-else>
-		<form action="/" class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">				
+		<form class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">				
 			<fieldset class="sender-data form-section-wrapper">
 				<legend>Відправник</legend>
 				
@@ -174,11 +174,11 @@
 					</div>
 				</div>
 			</fieldset>
-		</form>	
-		<div class="form-info">
-			<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
-			<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
-		</div>
+			<div class="form-info">
+				<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
+				<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
+			</div>
+		</form>
 	</div>
 </template>
 
