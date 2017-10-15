@@ -3,7 +3,9 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 import Test2 from '@/components/common/test2';
-import Payments from '@/components/payments';
+
+import Payments from '@/components/payments/payments';
+import PaymentEdit from '@/components/payments/edit';
 
 import Users from '@/components/users/users';
 import UserEdit from '@/components/users/edit';
@@ -21,6 +23,7 @@ export default new Router({
     { path: '/test2', component: Test2 },
 	
     { path: '/payments', component: Payments },
+	{ path: '/payment-edit', component: PaymentEdit },
 	
     { path: '/users', component: Users },
     { path: '/user-edit', component: UserEdit },

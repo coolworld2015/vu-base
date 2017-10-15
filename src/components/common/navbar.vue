@@ -124,7 +124,7 @@ export default {
 						this.phones = false;
 					}
 					
-					if (this.route == 'Audit') {
+					if (this.route == 'Audits') {
 						this.audits = true;
 					} else {
 						this.audits = false;

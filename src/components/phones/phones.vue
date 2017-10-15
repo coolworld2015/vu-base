@@ -10,7 +10,6 @@
 				<phones-footer></phones-footer> 
 			</main>
 		</div>
-
 	</div>
 </template>
 

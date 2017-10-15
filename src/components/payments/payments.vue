@@ -4,20 +4,21 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					 
+					<payments-header></payments-header> 
 					<payments-items></payments-items>
 				</section>
-				 
+				<payments-footer></payments-footer> 
 			</main>
 		</div>
-
 	</div>
 </template>
 
 <script>
-import appConfig from '../main';
+import appConfig from '../../main';
 import navbar from '@/components/common/navbar';
-import paymentsItems from '@/components/paymentsItems';
+import paymentsHeader from '@/components/payments/header';
+import paymentsItems from '@/components/payments/items';
+import paymentsFooter from '@/components/payments/footer';
 
 export default {
   name: 'payments',
@@ -31,7 +32,9 @@ export default {
 	},
 	components: {
 		navbar:	navbar,
-		paymentsItems: paymentsItems
+		paymentsHeader: paymentsHeader,
+		paymentsItems: paymentsItems,
+		paymentsFooter: paymentsFooter
 	}
 }
 </script>
