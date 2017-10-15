@@ -43,35 +43,73 @@ export default {
 	  return {
 		items: [],
 		filteredItems: [],
+		recordsCount: 20,
+		positionY: 0,
 		status: 'loading',
 		clicked: false
 	  }
 	},
 	created() {
+		//document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll);
+		//setTimeout(function() {
+		//	document.querySelector('.search-results-content').addEventListener('scroll', ()=>console.log(document.querySelector('.search-results-content').scrollTop));
+		//}, 1000);
 		this.fetchData();
 		appConfig.$on('searchQuery', searchQuery => {
 			this.searchQuery = searchQuery;
 			var arr = [].concat(this.filteredItems);
 			var items = arr.filter((el) => el.id.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
-			this.items = items.slice(0, 50);
-			appConfig.$emit('itemsCount', items.length);
+			this.items = items.slice(0, 20);
+			this.positionY = 0;
+			this.recordsCount = 20;
 			
+			appConfig.$emit('itemsCount', items.length);
 			if (searchQuery == '') {
-				this.items = this.filteredItems.slice(0, 50);
+				this.items = this.filteredItems.slice(0, 20);
 			}
 		})
+		
+	},
+	destroyed() {
+		//window.removeEventListener('scroll', this.handleScroll);
 	},
 	methods: {
 		fetchData() {
 			this.$http.get('https://ui-base.herokuapp.com/api/audit/get')
 				.then(result => {
-					this.items = result.data.sort(this.sort).slice(0, 50);
+					this.items = result.data.sort(this.sort).slice(0, 20);
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
 					appConfig.$emit('itemsCount', result.data.length);
+					/*
+					setTimeout(function() {
+						document.querySelector('.search-results-content').addEventListener('scroll', 
+						()=>console.log(document.querySelector('.search-results-content').scrollTop));
+					}, 1000);
+					*/
+					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}
+					, 1000);
 				}).catch((error)=> {
 					this.status = 'error';
 				})
+		},
+		handleScroll() {
+			var position = document.querySelector('.search-results-content').scrollTop;
+			console.log(position);
+			var items, positionY, recordsCount;
+			recordsCount = this.recordsCount;
+			positionY = this.positionY;
+			items = this.filteredItems.slice(0, recordsCount);
+			
+			if (position > positionY) {
+				console.log(items.length);
+				console.log(position);
+ 
+				this.items = items;
+				this.recordsCount = recordsCount + 10;
+				this.positionY = positionY + 500;
+ 
+			}
 		},
 		onItem(item) {
 			if (this.clicked) {
