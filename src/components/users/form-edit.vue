@@ -174,11 +174,12 @@
 					</div>
 				</div>
 			</fieldset>
-			<div class="form-info">
-				<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
-				<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
-			</div>
 		</form>
+		
+		<div class="form-info">
+			<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
+			<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
+		</div>
 	</div>
 </template>
 

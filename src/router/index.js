@@ -20,7 +20,7 @@ import AuditsEdit from '@/components/audits/edit';
 
 export default new Router({
   routes: [
-    { path: '/', component: Users },
+    { path: '/', component: Login },
     { path: '/login', component: Login },
     { path: '/test2', component: Test2 },
 	
