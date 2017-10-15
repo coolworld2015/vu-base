@@ -9,20 +9,15 @@
 		<div class="payment" v-for="item in items" v-bind:class="{ selected: clicked }" v-on:click="showDetails(item)">
 			<div class="search-results-item search-results-choose"><span class="circle"></span></div>
 			<div class="search-results-item search-results-sender">{{ item.id }}</div>
-			<div class="search-results-item search-results-product">{{ item.name }}</div>
-			<div class="search-results-item search-results-transfer">{{ item.id }}</div>
-			<div class="search-results-item search-results-currency">UAH</div>
-			<div class="search-results-item search-results-amount">1111</div>
-			<div class="search-results-item search-results-date">01 Жовтня 2017</div>
+			<div class="search-results-item search-results-transfer">{{ item.name }}</div>
+			<div class="search-results-item search-results-sender">{{ item.date }}</div>
+			<div class="search-results-item search-results-transfer">{{ item.description }}</div>
+			<div class="search-results-item search-results-amount">{{ (item.ip).split('f:')[1]}}</div>
+
 			<div class="search-results-item search-results-result long-term">
 				<span class="search-results-icon"></span>
-				30 днів
-			</div>
-			<div class="search-results-item search-results-status active">
-				<svg class="search-results-svg"><use xlink:href="#flag"></use></svg>
-				Активний
-			</div>
-			<div class="search-results-item search-results-other">...</div>
+				{{ item.id }}
+			</div> 
 		</div>
 	</div>
 
@@ -53,7 +48,7 @@ export default {
 		this.fetchData();
 		appConfig.$on('searchQuery', searchQuery => {
 			this.searchQuery = searchQuery;
-			var arr = [].concat(appConfig.audit.items);
+			var arr = [].concat(appConfig.audits.items);
 			var items = arr.filter((el) => el.id.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
 			this.filteredItems = items;
 			this.items = items.slice(0, 20);
@@ -62,8 +57,8 @@ export default {
 			
 			appConfig.$emit('itemsCount', items.length);
 			if (searchQuery == '') {
-				this.items = appConfig.audit.items.slice(0, 20);
-				this.filteredItems = appConfig.audit.items;
+				this.items = appConfig.audits.items.slice(0, 20);
+				this.filteredItems = appConfig.audits.items;
 			}
 		})
 		
@@ -72,7 +67,7 @@ export default {
 		fetchData() {
 			this.$http.get('https://ui-base.herokuapp.com/api/audit/get')
 				.then(result => {
-					appConfig.audit.items = result.data.sort(this.sort);
+					appConfig.audits.items = result.data.sort(this.sort);
 					this.items = result.data.sort(this.sort).slice(0, 20);
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
@@ -90,8 +85,8 @@ export default {
 			items = this.filteredItems.slice(0, recordsCount);
 			
 			if (position > positionY) {
-				console.log(items.length);
-				console.log(position);
+				//console.log(items.length);
+				//console.log(position);
  
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
@@ -109,8 +104,8 @@ export default {
 			//this.clicked = true;
 		},			
 		showDetails(item){
-			appConfig.user = item;
-			this.$router.push('user-edit');
+			appConfig.audit = item;
+			this.$router.push('audit-edit');
 		},
 		sort(a, b) {
 			let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();

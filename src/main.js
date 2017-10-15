@@ -13,12 +13,8 @@ import './assets/css/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const appConfig = new Vue();
 appConfig.route ='Payments',
-appConfig.audit = {
-		refresh: true,
-		items: [],
-		item: {}
-	};
-	
+appConfig.audits = { items: [] };
+appConfig.phones = { items: [] };
 export default appConfig;
 
 new Vue({

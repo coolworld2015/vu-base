@@ -6,24 +6,22 @@
 	</div>
 
 	<div v-else-if="status === 'show'" class="search-results-content">
-		<div class="payment" v-for="item in items" v-bind:class="{ selected: clicked }" v-on:click="showDetails(item)">
+ 
+		<div class="payment" v-for="item in items" v-on:click="showDetails(item)">
 			<div class="search-results-item search-results-choose"><span class="circle"></span></div>
 			<div class="search-results-item search-results-sender">{{ item.name }}</div>
-			<div class="search-results-item search-results-product">{{ item.name }}</div>
-			<div class="search-results-item search-results-transfer">{{ item.id }}</div>
-			<div class="search-results-item search-results-currency">UAH</div>
-			<div class="search-results-item search-results-amount">1111</div>
-			<div class="search-results-item search-results-date">01 Жовтня 2017</div>
+			<div class="search-results-item search-results-transfer">{{ item.phone }}</div>
+			<div class="search-results-item search-results-sender">{{ item.street }}</div>
+			<div class="search-results-item search-results-transfer">{{ item.house }}</div>
+			<div class="search-results-item search-results-amount">{{ item.apt }}</div>
+
 			<div class="search-results-item search-results-result long-term">
 				<span class="search-results-icon"></span>
-				30 днів
-			</div>
-			<div class="search-results-item search-results-status active">
-				<svg class="search-results-svg"><use xlink:href="#flag"></use></svg>
-				Активний
-			</div>
-			<div class="search-results-item search-results-other">...</div>
+				{{ item.index }}
+			</div> 
+
 		</div>
+ 
 	</div>
 
 	<div v-else-if="status === 'error'">
@@ -43,6 +41,8 @@ export default {
 	  return {
 		items: [],
 		filteredItems: [],
+		recordsCount: 20,
+		positionY: 0,
 		status: 'loading',
 		clicked: false
 	  }
@@ -51,13 +51,17 @@ export default {
 		this.fetchData();
 		appConfig.$on('searchQuery', searchQuery => {
 			this.searchQuery = searchQuery;
-			var arr = [].concat(this.filteredItems);
+			var arr = [].concat(appConfig.phones.items);
 			var items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
-			this.items = items.slice(0, 50);
-			appConfig.$emit('itemsCount', items.length);
+			this.filteredItems = items;
+			this.items = items.slice(0, 20);
+			this.positionY = 0;
+			this.recordsCount = 20;
 			
+			appConfig.$emit('itemsCount', items.length);
 			if (searchQuery == '') {
-				this.items = this.filteredItems.slice(0, 50);
+				this.items = appConfig.phones.items.slice(0, 20);
+				this.filteredItems = appConfig.phones.items;
 			}
 		})
 	},
@@ -65,13 +69,32 @@ export default {
 		fetchData() {
 			this.$http.get('https://ui-base.herokuapp.com/api/items/get')
 				.then(result => {
-					this.items = result.data.sort(this.sort).slice(0, 50);
+					appConfig.phones.items = result.data.sort(this.sort);
+					this.items = result.data.sort(this.sort).slice(0, 20);
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
 					appConfig.$emit('itemsCount', result.data.length);
+					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 1000);
 				}).catch((error)=> {
 					this.status = 'error';
 				})
+		},
+		handleScroll() {
+			var position = document.querySelector('.search-results-content').scrollTop;
+			var items, positionY, recordsCount;
+			recordsCount = this.recordsCount;
+			positionY = this.positionY;
+			items = this.filteredItems.slice(0, recordsCount);
+			
+			if (position > positionY) {
+				//console.log(items.length);
+				//console.log(position);
+ 
+				this.items = items;
+				this.recordsCount = recordsCount + 10;
+				this.positionY = positionY + 600;
+ 
+			}
 		},
 		onItem(item) {
 			if (this.clicked) {
@@ -83,8 +106,8 @@ export default {
 			//this.clicked = true;
 		},			
 		showDetails(item){
-			appConfig.user = item;
-			this.$router.push('user-edit');
+			appConfig.phone = item;
+			this.$router.push('phone-edit');
 		},
 		sort(a, b) {
 			let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();

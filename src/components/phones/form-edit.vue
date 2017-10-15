@@ -20,14 +20,14 @@
 					</div>
 					<div class="form-group">
 						<label for="senderName">Ім'я</label>
-						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="pass">
+						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="name">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть ім'я відправника.
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="senderPatronymic">По-батькові</label>
-						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="description">
+						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="name">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть по-батькові відправника.
 						</div>
@@ -177,7 +177,7 @@
 		</form>	
 		<div class="form-info">
 			<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
-			<button class="btn btn-danger" type="submit" v-on:click="updateItem">Відправити</button>
+			<button class="btn btn-danger" type="submit" v-on:click="goBack">Відправити</button>
 		</div>
 	</div>
 </template>
@@ -196,8 +196,8 @@ export default {
 		}
 	},
 	created() {
-		if (!appConfig.user) {
-			this.$router.push('/users');
+		if (!appConfig.phone) {
+			this.$router.push('/phones');
 		} else {
 			this.setData();
 		}
@@ -205,28 +205,17 @@ export default {
 	methods: {
 		setData() {
 			if (appConfig) {
-				if (appConfig.user) {
-					this.id = appConfig.user.id;
-					this.name = appConfig.user.name;
-					this.pass = appConfig.user.pass;
-					this.description = appConfig.user.description;
+				if (appConfig.phone) {
+					this.id = appConfig.phone.id;
+					this.name = appConfig.phone.name;
+					//this.pass = appConfig.user.pass;
+					//this.description = appConfig.user.description;
 				}
 			}
 		},
 		goBack() {
-			this.$router.push('/users');
-		},
-		updateItem() {
-			this.loading = true;
-			this.$http.post('https://ui-base.herokuapp.com/api/users/update', {                
-					id: this.id,
-					name: this.name,
-					pass: this.pass,
-					description: this.description})
-				.then(result => { 
-					this.$router.push('/users');
-				})
-		},
+			this.$router.push('/phones');
+		}
 	}
 }
 </script>

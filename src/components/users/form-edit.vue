@@ -6,7 +6,7 @@
 	</div>
 	
 	<div v-else>
-		<form action="/" class="payment-form payment-form--create d-flex justify-content-stretch">				
+		<form action="/" class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">				
 			<fieldset class="sender-data form-section-wrapper">
 				<legend>Відправник</legend>
 				
@@ -191,6 +191,8 @@ export default {
 	data() {
 		return {
 			name: '',
+			pass: '',
+			description: '',
 			amount: '',
 			loading: false
 		}
