@@ -43,7 +43,7 @@ export default {
 			this.loading = true;
 			this.error = false;
 			//this.$http.get('https://ui-base.herokuapp.com/api/audit/get')
-			this.$http.post('http://jwt-base.herokuapp.com/api/login', 
+			this.$http.post('https://jwt-base.herokuapp.com/api/login', 
 				{
 					name: this.name,
 					pass: this.pass,

@@ -67,7 +67,7 @@ export default {
 	},
 	methods: {
 		fetchData() {
-			this.$http.get('https://ui-base.herokuapp.com/api/items/get')
+			this.$http.get('https://jwt-base.herokuapp.com/api/items/get', {headers: {'Authorization': appConfig.access_token}})
 				.then(result => {
 					appConfig.phones.items = result.data.sort(this.sort);
 					this.items = result.data.sort(this.sort).slice(0, 20);

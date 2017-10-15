@@ -221,11 +221,13 @@ export default {
 		},
 		updateItem() {
 			this.loading = true;
-			this.$http.post('https://ui-base.herokuapp.com/api/users/update', {                
+			this.$http.post('https://jwt-base.herokuapp.com/api/users/update', {                
 					id: this.id,
 					name: this.name,
 					pass: this.pass,
-					description: this.description})
+					description: this.description,
+					authorization: appConfig.access_token
+				})
 				.then(result => { 
 					this.$router.push('/users');
 				})

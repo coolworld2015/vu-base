@@ -220,7 +220,9 @@ export default {
 					id: +new Date,
 					name: this.name,
 					pass: this.pass,
-					description: this.description})
+					description: this.description,
+					authorization: appConfig.access_token
+				})
 				.then(result => { 
 					this.$router.push('/users');
 				})
