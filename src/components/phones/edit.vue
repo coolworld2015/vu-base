@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import navbar from '@/components/navbar';
+import navbar from '@/components/common/navbar';
 import phoneFormEdit from '@/components/phones/form-edit';
 
 export default {

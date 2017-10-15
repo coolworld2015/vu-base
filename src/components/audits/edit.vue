@@ -4,7 +4,7 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					<user-form-add></user-form-add>
+					<audit-form-edit></audit-form-edit>
 				</section>
 			</main>
 		</div>
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import navbar from '@/components/navbar';
-import userFormAdd from '@/components/users/form-add';
+import navbar from '@/components/common/navbar';
+import auditFormEdit from '@/components/audits/form-edit';
 
 export default {
-	name: 'user-add',
+	name: 'audit-edit',
 	components: {
 		navbar:	navbar,
-		userFormAdd: userFormAdd
+		auditFormEdit: auditFormEdit
 	}
 }
 </script>

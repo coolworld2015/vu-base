@@ -16,7 +16,7 @@
 
 <script>
 import appConfig from '../main';
-import navbar from '@/components/navbar';
+import navbar from '@/components/common/navbar';
 import paymentsItems from '@/components/paymentsItems';
 
 export default {

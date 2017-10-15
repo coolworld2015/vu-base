@@ -16,7 +16,7 @@
 
 <script>
 import appConfig from '../../main';
-import navbar from '@/components/navbar';
+import navbar from '@/components/common/navbar';
 import phonesHeader from '@/components/phones/header';
 import phonesItems from '@/components/phones/items';
 import phonesFooter from '@/components/phones/footer';

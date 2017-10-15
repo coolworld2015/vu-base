@@ -13,21 +13,21 @@
 				<div class="form-section">
 					<div class="form-group">
 						<label for="senderSurname">Прізвище</label>
-						<input type="text" class="form-control" id="senderSurname" placeholder="Прізвище відправника" v-model="name">
+						<input type="text" class="form-control" id="senderSurname" placeholder="Прізвище відправника" v-model="id">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть прізвище відправника.
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="senderName">Ім'я</label>
-						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="pass">
+						<input type="text" class="form-control" id="senderName" placeholder="Ім'я відправника" v-model="name">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть ім'я відправника.
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="senderPatronymic">По-батькові</label>
-						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="description">
+						<input type="text" class="form-control" id="senderPatronymic" placeholder="По-батькові відправника" v-model="name">
 						<div class="invalid-feedback">
 							Будь ласка, коректно вкажіть по-батькові відправника.
 						</div>
@@ -177,54 +177,46 @@
 		</form>	
 		<div class="form-info">
 			<p>Відправити платіж <span class="amount">{{((+amount).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}}</span> UAH</p>
-			<button class="btn btn-danger" type="submit" v-on:click="addItem">Відправити</button>
+			<button class="btn btn-danger" type="submit" v-on:click="goBack">Відправити</button>
 		</div>
 	</div>
 </template>
 
 <script>
 import appConfig from '../../main';
-import navbar from '@/components/navbar';
+import navbar from '@/components/common/navbar';
 
 export default {
-	name: 'users-add',
+	name: 'audit-edit',
 	data() {
 		return {
+			id: '',
 			name: '',
-			pass: '',
-			description: '',
 			amount: '',
 			loading: false
 		}
 	},
 	created() {
- 
+		if (!appConfig.audit) {
+			this.$router.push('/audits');
+		} else {
+			this.setData();
+		}
 	},
 	methods: {
 		setData() {
 			if (appConfig) {
-				if (appConfig.user) {
-					this.id = appConfig.user.id;
-					this.name = appConfig.user.name;
-					this.pass = appConfig.user.pass;
-					this.description = appConfig.user.description;
+				if (appConfig.audit) {
+					this.id = appConfig.audit.id;
+					this.name = appConfig.audit.name;
+					//this.pass = appConfig.user.pass;
+					//this.description = appConfig.user.description;
 				}
 			}
 		},
 		goBack() {
-			this.$router.push('/users');
-		},
-		addItem() {
-			this.loading = true;
-			this.$http.post('https://ui-base.herokuapp.com/api/users/add', {                
-					id: +new Date,
-					name: this.name,
-					pass: this.pass,
-					description: this.description})
-				.then(result => { 
-					this.$router.push('/users');
-				})
-		},
+			this.$router.push('/audits');
+		}
 	}
 }
 </script>

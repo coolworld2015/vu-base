@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import navbar from '@/components/navbar';
-import appConfig from '../main';
+import navbar from '@/components/common/navbar';
+import appConfig from '../../main';
 
 export default {
   name: 'test',

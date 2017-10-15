@@ -4,10 +4,10 @@
 		<div class="content">
 			<main>
 				<section class="search-results">
-					<users-header></users-header> 
-					<users-items></users-items>
+					<audits-header></audits-header> 
+					<audits-items></audits-items>
 				</section>
-				<users-footer></users-footer> 
+				<audits-footer></audits-footer> 
 			</main>
 		</div>
 
@@ -17,15 +17,15 @@
 <script>
 import appConfig from '../../main';
 import navbar from '@/components/common/navbar';
-import usersHeader from '@/components/users/header';
-import usersItems from '@/components/users/items';
-import usersFooter from '@/components/users/footer';
+import auditsHeader from '@/components/audits/header';
+import auditsItems from '@/components/audits/items';
+import auditsFooter from '@/components/audits/footer';
 
 export default {
-  name: 'users',
+  name: 'audits',
   data () {
     return {
-      route: 'Users'
+      route: 'Audits'
     }
   },
 	created() {
@@ -33,9 +33,9 @@ export default {
 	},
 	components: {
 		navbar:	navbar,
-		usersHeader: usersHeader,
-		usersItems: usersItems,
-		usersFooter: usersFooter
+		auditsHeader: auditsHeader,
+		auditsItems: auditsItems,
+		auditsFooter: auditsFooter
 	}
 }
 </script>

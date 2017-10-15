@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 Vue.use(Router);
 
-import Test2 from '@/components/test2';
+import Test2 from '@/components/common/test2';
 import Payments from '@/components/payments';
 
 import Users from '@/components/users/users';
@@ -12,8 +12,8 @@ import UserAdd from '@/components/users/add';
 import Phones from '@/components/phones/phones';
 import PhoneEdit from '@/components/phones/edit';
 
-import Audit from '@/components/audit/audit';
-import AuditEdit from '@/components/audit/edit';
+import Audits from '@/components/audits/audit';
+import AuditsEdit from '@/components/audits/edit';
 
 export default new Router({
   routes: [
@@ -29,7 +29,7 @@ export default new Router({
 	{ path: '/phones', component: Phones },
 	{ path: '/phone-edit', component: PhoneEdit },
 	
-	{ path: '/audits', component: Audit },
-	{ path: '/audit-edit', component: AuditEdit }
+	{ path: '/audits', component: Audits },
+	{ path: '/audit-edit', component: AuditsEdit }
   ]
 })
