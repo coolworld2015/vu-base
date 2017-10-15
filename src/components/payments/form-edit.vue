@@ -39,27 +39,31 @@
 							Будь ласка, коректно вкажіть номер телефону відправника.
 						</div>
 					</div>
-					<div class="form-group input-disabled">
-						<label for="senderBirthday">Дата народження</label>
-						<input type="text" class="form-control" id="senderBirthday" placeholder="ДД.ММ.РРРР" disabled>
-						<div class="invalid-feedback">
-							Будь ласка, коректно вкажіть дату народження відправника.
+					
+<!-- Test -->		<div v-show="test">
+						<div class="form-group input-disabled" v-show="test">
+							<label for="senderBirthday">Дата народження</label>
+							<input type="text" class="form-control" id="senderBirthday" placeholder="ДД.ММ.РРРР" disabled>
+							<div class="invalid-feedback">
+								Будь ласка, коректно вкажіть дату народження відправника.
+							</div>
+						</div>
+						<div class="form-group input-disabled">
+							<label for="senderBirthPlace">Місце народження</label>
+							<input type="text" class="form-control" id="senderBirthPlace" placeholder="Місто народження, країна" disabled>
+							<div class="invalid-feedback">
+								Будь ласка, коректно вкажіть місце народження відправника.
+							</div>
+						</div>
+						<div class="form-group input-disabled">
+							<label for="taxId">ІПН</label>
+							<input type="text" class="form-control" id="taxId" placeholder="Ідентифікаційний номер" disabled>
+							<div class="invalid-feedback">
+								Будь ласка, коректно вкажіть індивідуальний податковий номер відправника.
+							</div>
 						</div>
 					</div>
-					<div class="form-group input-disabled">
-						<label for="senderBirthPlace">Місце народження</label>
-						<input type="text" class="form-control" id="senderBirthPlace" placeholder="Місто народження, країна" disabled>
-						<div class="invalid-feedback">
-							Будь ласка, коректно вкажіть місце народження відправника.
-						</div>
-					</div>
-					<div class="form-group input-disabled">
-						<label for="taxId">ІПН</label>
-						<input type="text" class="form-control" id="taxId" placeholder="Ідентифікаційний номер" disabled>
-						<div class="invalid-feedback">
-							Будь ласка, коректно вкажіть індивідуальний податковий номер відправника.
-						</div>
-					</div>
+					
 				</div>
 
 				<div class="form-section">
@@ -193,7 +197,8 @@ export default {
 			id: '',
 			name: '',
 			amount: '',
-			loading: false
+			loading: false,
+			test: false
 		}
 	},
 	created() {

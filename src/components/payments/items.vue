@@ -5,7 +5,7 @@
 		</div>
 	</div>
 	
-	<div class="search-results-content" v-else>
+	<div v-else-if="status === 'show'" class="search-results-content">
 		<div class="payment" v-for="item in items" v-bind:class="{ selected: clicked }" v-on:click="showDetails(item)">
 			<div class="search-results-item search-results-choose"><span class="circle"></span></div>
 			<div class="search-results-item search-results-sender">{{ item.id }}</div>
@@ -77,7 +77,7 @@ export default {
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
 					appConfig.$emit('itemsCount', result.data.length);
-					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 1000);
+					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 				}).catch((error)=> {
 					this.status = 'error';
 				})
@@ -92,11 +92,9 @@ export default {
 			if (position > positionY) {
 				//console.log(items.length);
 				//console.log(position);
- 
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
 				this.positionY = positionY + 600;
- 
 			}
 		},
 		onItem(item) {

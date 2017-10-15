@@ -74,7 +74,7 @@ export default {
 					this.filteredItems = result.data.sort(this.sort);
 					this.status = 'show';
 					appConfig.$emit('itemsCount', result.data.length);
-					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 1000);
+					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 				}).catch((error)=> {
 					this.status = 'error';
 				})
