@@ -11,6 +11,8 @@ import UserAdd from '@/components/users/add';
 
 import Phones from '@/components/phones/phones';
 
+import Audit from '@/components/audit/audit';
+
 export default new Router({
   routes: [
     { path: '/', component: Users },
@@ -23,5 +25,7 @@ export default new Router({
     { path: '/user-add', component: UserAdd },
 	
 	{ path: '/phones', component: Phones },
+	
+	{ path: '/audit', component: Audit },
   ]
 })
