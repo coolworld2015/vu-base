@@ -1,4 +1,4 @@
- 
+
 
 /*General styles*/
 
@@ -43,7 +43,7 @@ button:focus {
 .login-screen {
 	width: 100%;
 	padding-top: 120px;
-	background: #db3045;	
+	background: #db3045;
 }
 
 .login-form-popup {
@@ -74,6 +74,75 @@ button:focus {
 
 .form-control::placeholder {
 	color: #000;
+}
+
+.form-control.warning {
+
+	border-color: #dc3545;
+
+}
+
+
+.err-explanation {
+
+	display: none;
+
+	position: absolute;
+
+	z-index: 100;
+
+	width: 90%;
+
+	left: 50%;
+
+	bottom: -10px;
+
+	-webkit-transform: translate(-50%, 100%);
+
+	transform: translate(-50%, 100%);
+
+	padding: 5px;
+
+	border: 1px solid #dc3545;
+
+	border-radius: 3px;
+
+	color: #dc3545;
+
+	background: #fff;
+
+	font-size: 12px;
+
+	font-style: italic;
+
+}
+
+.err-explanation:before {
+	content: '';
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #dc3545;
+}
+
+.err-explanation:after {
+	content: '';
+	position: absolute;
+	top: -9px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid #fff;
 }
 
 .form-header {
@@ -724,7 +793,7 @@ main {
 }
 
 .menu-block-header {
-	padding-left: 10px; 
+	padding-left: 10px;
 	font-size: .9em;
 }
 
@@ -828,7 +897,8 @@ main {
 .hot-key-hint--left{
 	left: -10px;
 }
-*Forms*/
+
+/*Forms*/
 
 .payment-form {
 	flex-wrap: wrap;
@@ -838,6 +908,7 @@ main {
 }
 
 .payment-form .form-group {
+	position: relative;
 	margin-bottom: 8px;
 }
 
@@ -872,15 +943,19 @@ fieldset:not(:first-child) .form-section {
 
 .payment-form label {
 	margin-bottom: 5px;
-	color: #000;	
+	color: #000;
 	font-size: 14px;
 	font-weight: 400;
+}
+
+input.warning:focus + .err-explanation {
+	display: block;
 }
 
 .payment-form input,
 .payment-form select,
 .payment-form textarea {
-	color: #424960;	
+	color: #424960;
 	font-size: 14px;
 	font-weight: 300;
 	font-style: italic;
