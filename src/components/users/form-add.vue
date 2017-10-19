@@ -135,8 +135,12 @@
 					</div>
 					<div class="form-group">
 						<label for="receiverPhone">Номер телефону</label>
-						<input type="text" class="form-control" id="receiverPhone" placeholder="+380 (XX) XXX-XX-XX">
-						<div class="invalid-feedback">
+						<input type="text" class="form-control" v-bind:class="{ warning: receiverPhoneErr }"
+							   id="receiverPhone" v-model="receiverPhone"
+							   v-on:blur="isValid(receiverPhone)"
+							   v-on:keyup="isValid(receiverPhone)"
+							   placeholder="+380 (XX) XXX-XX-XX">
+						<div class="err-explanation">
 							Будь ласка, коректно вкажіть номер телефону отримувача.
 						</div>
 					</div>
@@ -194,6 +198,8 @@ export default {
 			pass: '',
 			description: '',
 			amount: '',
+			receiverPhone: '',
+			receiverPhoneErr: false,
 			loading: false
 		}
 	},
@@ -209,6 +215,15 @@ export default {
 					this.pass = appConfig.user.pass;
 					this.description = appConfig.user.description;
 				}
+			}
+		},
+		isValid (data) {
+			if (/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(data)) {
+				console.log('Valid')
+				this.receiverPhoneErr = false;
+			} else {
+				console.log('BAD')
+				this.receiverPhoneErr = true;
 			}
 		},
 		goBack() {
