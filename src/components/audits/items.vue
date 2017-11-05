@@ -15,7 +15,8 @@
       <div class="search-results-item search-results-transfer">{{ item.name }}</div>
       <div class="search-results-item search-results-sender">{{ item.date }}</div>
       <div class="search-results-item search-results-transfer">{{ item.description }}</div>
-      <div class="search-results-item search-results-amount">{{ (item.ip).split('f:')[1]}}</div>
+      <!-- <div class="search-results-item search-results-amount">{{ (item.ip).split('f:')[1]}}</div> -->
+      <div class="search-results-item search-results-amount">{{ item.ip }}</div>
 
       <div class="search-results-item search-results-result long-term"
            v-show="(item.id == selectedItem)"
@@ -72,11 +73,12 @@
     },
     methods: {
       fetchData() {
-        this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
+        //this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
+        this.$http.get('http://localhost:3000/api/audit/get')
           .then(result => {
-            appConfig.audits.items = result.data.sort(this.sort);
-            this.items = result.data.sort(this.sort).slice(0, 20);
-            this.filteredItems = result.data.sort(this.sort);
+            appConfig.audits.items = result.data;
+            this.items = result.data.slice(0, 20);
+            this.filteredItems = result.data;
             this.status = 'show';
             appConfig.$emit('itemsCount', result.data.length);
             setTimeout(() => {
@@ -116,6 +118,7 @@
         this.$router.push('audit-edit');
       },
       sort(a, b) {
+		return 0;
         let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
         if (nameA < nameB) {
           return -1

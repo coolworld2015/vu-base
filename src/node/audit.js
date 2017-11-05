@@ -14,9 +14,9 @@ var Audit = {
 module.exports.Audit = Audit;
 
 function getAudit(req, res) {
-    return AuditModel.find(function (err, users) {
+    return AuditModel.find(function (err, audits) {
         if (!err) {
-            return res.send(users);
+            return res.send(audits);
         } else {
             res.statusCode = 500;
             return res.send({error: 'Server error'});
@@ -31,16 +31,17 @@ function addAudit(req, res) {
             id: req.body.id,
             name: req.body.name,
             date: date + ' ' + time,
-            ip: req.ip,
+            ip: req.body.ip,
             description: req.body.description
         },
-        function (err, audit) {
+        function (err, audits) {
             if (err) {
                 return res.send({error: 'Server error'});
             } else {
-                res.send(audit);
+                res.send(audits);
             }
-        });
+        }
+	);
 }
 
 function removeAllAudit(req, res, err) {

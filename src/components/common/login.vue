@@ -53,13 +53,22 @@ export default {
 					appConfig.access_token = result.body.token;
 					this.loading = false;
 					this.error = false;
-					this.$router.push('/payments');
+					this.addAudit();
+					this.$router.push('/test2');
 				})
 				.catch((error)=> {
 					this.loading = false;
 					this.error = true;
 				})
-		}
+		},
+		addAudit() {
+			this.$http.post('http://localhost:3000/api/audit/add', {
+				id: +new Date(),
+				name: this.name,
+				ip: 'АТ402006977',
+				description: 'Wdcj8gLoY3VSbydap'
+			})
+		}	
 	}
 }
 </script>
