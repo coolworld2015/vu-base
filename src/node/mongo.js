@@ -29,9 +29,11 @@ module.exports.UsersModel = UsersModel;
 //---------------------------------------------------------------------------------------------
 var Audit = new Schema({
     id: {type: String, required: true},
-    name: {type: String, required: true},
+    user: {type: String, required: true},
     date: {type: String, required: true},
-    ip: {type: String, required: true},
+    user_id: {type: String, required: true},
+    user_role: {type: String, required: true},
+    rro_id: {type: String, required: true},
     description: {type: String, required: true}
 });
 

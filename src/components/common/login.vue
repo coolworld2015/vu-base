@@ -64,9 +64,11 @@ export default {
 		addAudit() {
 			this.$http.post('http://localhost:3000/api/audit/add', {
 				id: +new Date(),
-				name: this.name,
-				ip: 'АТ402006977',
-				description: 'Wdcj8gLoY3VSbydap'
+				user: this.name,
+				user_id: 'Wdcj8gLoY3VSbydap',
+				user_role: 'Кассир',
+				rro_id: 'АТ402006977',
+				description: 'Вход в систему'
 			})
 		}	
 	}

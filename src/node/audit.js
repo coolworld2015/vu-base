@@ -28,20 +28,22 @@ function addAudit(req, res) {
     var date = new Date().toJSON().slice(0, 10);
     var time = new Date().toTimeString().slice(0, 8);
     AuditModel.create({
-            id: req.body.id,
-            name: req.body.name,
-            date: date + ' ' + time,
-            ip: req.body.ip,
-            description: req.body.description
-        },
-        function (err, audits) {
-            if (err) {
-                return res.send({error: 'Server error'});
-            } else {
-                res.send(audits);
-            }
-        }
-	);
+		id: req.body.id,
+		user: req.body.user,
+		date: date + ' ' + time,
+		user_id: req.body.user_id,
+		user_role: req.body.user_role,
+		rro_id: req.body.rro_id,
+		description: req.body.description
+	},
+	function (err, audits) {
+		if (err) {
+			console.log(err)
+			return res.send({error: 'Server error'});
+		} else {
+			res.send(audits);
+		}
+	});
 }
 
 function removeAllAudit(req, res, err) {

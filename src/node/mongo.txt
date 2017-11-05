@@ -11,9 +11,18 @@ mongod.exe --dbpath c:/!DISK/MongoDB --repair
 //Shell
 mongo shell
 show dbs
+db.getCollectionNames()
+
 use forpost
 show collections
-db.users.find()
+
+db.createCollection("audits")
+db.audits.find()
+db.audits.drop()
+
+db.hello.insert({'a':'b'})
+db.hello.find()
+
 db.dropDatabase()
 
 -----------------------------------------------------------------------------------------------------
@@ -32,6 +41,9 @@ mongoimport --db forpost --collection users --file users.json
 
 -----------------------------------------------------------------------------------------------------
 //Import/Export localData
+mongoimport --db forpost --collection audits --file audits.json
+mongoexport --db forpost --collection audits -o audits1.json
+
 mongoimport --db forpost --collection clients --file clients.json
 mongoexport --db forpost --collection clients -o clients1.json
 

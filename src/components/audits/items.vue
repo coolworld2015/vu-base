@@ -11,19 +11,13 @@
          v-bind:class="{ selected: (item.id == selectedItem && clicked)}"
          v-on:click="selectItem(item.id)">
       <div class="search-results-item search-results-choose"><span class="circle"></span></div>
-      <div class="search-results-item search-results-sender">{{ item.id }}</div>
-      <div class="search-results-item search-results-transfer">{{ item.name }}</div>
-      <div class="search-results-item search-results-sender">{{ item.date }}</div>
-      <div class="search-results-item search-results-transfer">{{ item.description }}</div>
-      <!-- <div class="search-results-item search-results-amount">{{ (item.ip).split('f:')[1]}}</div> -->
-      <div class="search-results-item search-results-amount">{{ item.ip }}</div>
+      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.description }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.user }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.user_role }}</div>
+      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.date }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.rro_id }}</div>
+ 
 
-      <div class="search-results-item search-results-result long-term"
-           v-show="(item.id == selectedItem)"
-           v-on:click="showDetails(item)">
-        <span class="search-results-icon"></span>
-        {{ item.id }}
-      </div>
     </div>
   </div>
 
@@ -57,7 +51,7 @@
       appConfig.$on('searchQuery', searchQuery => {
         this.searchQuery = searchQuery;
         let arr = [].concat(appConfig.audits.items);
-        let items = arr.filter((el) => el.id.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+        let items = arr.filter((el) => el.user.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
         this.filteredItems = items;
         this.items = items.slice(0, 20);
         this.positionY = 0;
@@ -119,7 +113,7 @@
       },
       sort(a, b) {
 		return 0;
-        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        let nameA = a.user.toLowerCase(), nameB = b.user.toLowerCase();
         if (nameA < nameB) {
           return -1
         }
@@ -131,3 +125,35 @@
     }
   }
 </script>
+
+<!--
+
+  <div v-else-if="status === 'show'" class="search-results-content">
+    <div class="payment" v-for="item in items"
+         v-bind:class="{ selected: (item.id == selectedItem && clicked)}"
+         v-on:click="selectItem(item.id)">
+      <div class="search-results-item search-results-choose"><span class="circle"></span></div>
+      <div class="search-results-item search-results-sender">{{ item.id }}</div>
+      <div class="search-results-item search-results-transfer">{{ item.name }}</div>
+      <div class="search-results-item search-results-sender">{{ item.date }}</div>
+      <div class="search-results-item search-results-transfer">{{ item.description }}</div>
+      <!-- <div class="search-results-item search-results-amount">{{ (item.ip).split('f:')[1]}}</div> -->
+      <div class="search-results-item search-results-amount">{{ item.ip }}</div>
+
+      <div class="search-results-item search-results-result long-term"
+           v-show="(item.id == selectedItem)"
+           v-on:click="showDetails(item)">
+        <span class="search-results-icon"></span>
+        {{ item.id }}
+      </div>
+    </div>
+  </div>
+ 
+
+      <div class="search-results-item search-results-result long-term"
+           v-show="(item.id == selectedItem)"
+           v-on:click="showDetails(item)">
+        <span class="search-results-icon"></span>
+        {{ item.id }}
+      </div> 
+ --> 
