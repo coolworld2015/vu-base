@@ -50,7 +50,7 @@
     <div class="form-info">
       <div class="d-flex justify-content-center">
         <button class="btn btn-danger" v-on:click="updateItem">Відправити</button>
-        <button class="btn btn-danger" v-on:click="goBack">Назад</button>
+        <button class="btn btn-danger" v-on:click="deleteConfirm">Видалити</button>
       </div>
     </div>
 
@@ -73,12 +73,6 @@ export default {
 		}
 	},
 	created() {
-        appConfig.$emit('showModal', {
-          elName: 'modal-confirmation',
-          confirm: this.confirmRefund,
-          html: `Ви дійсно хочете повернути грошовий переказ <span class="confirm-amount">$222 грн ?</span>`
-        })
-		  
 		if (!appConfig.user) {
 			this.$router.push('/users');
 		} else {
@@ -98,6 +92,23 @@ export default {
 		},
 		goBack() {
 			this.$router.push('/users');
+		},
+		deleteConfirm() {
+			appConfig.$emit('showModal', {
+			  elName: 'modal-confirmation',
+			  confirm: this.deleteItem,
+			  html: `Ви дійсно хочете видалити користувача <span class="confirm-amount">${ this.name }?</span>`
+			})
+		},
+		deleteItem() {
+		  this.loading = true;
+		  this.$http.post('https://jwt-base.herokuapp.com/api/users/delete', {
+			id: this.id,
+			authorization: appConfig.access_token
+		  })
+			.then(result => {
+			  this.$router.push('/users');
+			})
 		},
 		updateItem() {
 			this.loading = true;
