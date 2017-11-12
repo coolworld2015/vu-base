@@ -7,7 +7,7 @@
 		<div class="activated-payments-item" v-on:click="addItem">
 			<button class="" id="cancelSelection">
 				<svg class="activated-payments-svg"><use xlink:href="#cancel"></use></svg>
-				Відмінити
+				Створити
 			</button>
 		</div>
 		<div class="activated-payments-item">

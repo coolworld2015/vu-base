@@ -1,24 +1,24 @@
 <template>
-	<div class="wrapper">
-		<div class="content">
-			<router-view></router-view> 
-		</div>
-	</div>
+  <div class="wrapper">
+    <system-modal></system-modal>
+    <system-notifications></system-notifications>
+    <div class="content">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import SystemNotifications from '@/components/notifications/system-notifications'
+  import SystemModal from '@/components/notifications/system-modal'
+
+  export default {
+    name: 'app',
+    components: {
+      SystemNotifications,
+      SystemModal
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+ 

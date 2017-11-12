@@ -1,36 +1,31 @@
 <template>
-	<div v-if="status === 'loading'">
-		<div style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-			 <img src="../../assets/img/loading.gif">
-		</div>
-	</div>
+  <div v-if="status === 'loading'">
+    <div
+      style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
+      <img src="../../assets/img/loading.gif">
+    </div>
+  </div>
 
-	<div v-else-if="status === 'show'" class="search-results-content">
-		<div class="payment" v-for="item in items" v-bind:class="{ selected: clicked }" v-on:click="showDetails(item)">
-			<div class="search-results-item search-results-choose"><span class="circle"></span></div>
-			<div class="search-results-item search-results-sender">{{ item.name }}</div>
-			<div class="search-results-item search-results-product">{{ item.name }}</div>
-			<div class="search-results-item search-results-transfer">{{ item.id }}</div>
-			<div class="search-results-item search-results-currency">UAH</div>
-			<div class="search-results-item search-results-amount">1111</div>
-			<div class="search-results-item search-results-date">01 Жовтня 2017</div>
-			<div class="search-results-item search-results-result long-term">
-				<span class="search-results-icon"></span>
-				30 днів
-			</div>
-			<div class="search-results-item search-results-status active">
-				<svg class="search-results-svg"><use xlink:href="#flag"></use></svg>
-				Активний
-			</div>
-			<div class="search-results-item search-results-other">...</div>
-		</div>
-	</div>
+  <div v-else-if="status === 'show'" class="search-results-content">
+    <div class="payment" v-for="item in items" v-on:click="showDetails(item)">
+      <div class="search-results-item search-results-choose"style="width: 5%;"><span class="circle"></span></div>
+      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.name }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.pass }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.description }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.id }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.description }}</div>
+<!--      <div class="search-results-item search-results-transfer" style="width: 10%;">{{ item.description }}</div>-->
 
-	<div v-else-if="status === 'error'">
- 		<div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; color: red; font-weight: bold; font-size:24px">
-             Something went wrong
-		</div>
-	</div>	
+
+    </div>
+  </div>
+
+  <div v-else-if="status === 'error'">
+    <div
+      style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; color: red; font-weight: bold; font-size:24px">
+      Something went wrong
+    </div>
+  </div>
 </template>
 
 <script>

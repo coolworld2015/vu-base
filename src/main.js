@@ -17,6 +17,7 @@ appConfig.phones = { items: [] };
 appConfig.audits = { items: [] };
 appConfig.users = { items: [] };
 appConfig.payments = { items: [] };
+appConfig.notifications = {items: []}
 export default appConfig;
 
 new Vue({

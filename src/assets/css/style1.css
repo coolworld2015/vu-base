@@ -1,3 +1,5 @@
+
+
 /*General styles*/
 
 html,
@@ -72,38 +74,47 @@ button:focus {
 
 .form-control::placeholder {
 	color: #000;
-	font-style: italic;
 }
 
-.form-control.warning:not([disabled]) {
+.form-control.warning {
+
 	border-color: #dc3545;
+
 }
 
-.login-error {
-	position: absolute;
-	width: 100%;
-	left: 0;
-	bottom: 2px;
-	color: #dc3545;
-	font-size: 14px;
-}
 
 .err-explanation {
+
 	display: none;
+
 	position: absolute;
+
 	z-index: 100;
+
 	width: 90%;
+
 	left: 50%;
+
 	bottom: -10px;
+
 	-webkit-transform: translate(-50%, 100%);
+
 	transform: translate(-50%, 100%);
+
 	padding: 5px;
+
 	border: 1px solid #dc3545;
+
 	border-radius: 3px;
+
 	color: #dc3545;
+
 	background: #fff;
-	font-size: 11px;
+
+	font-size: 12px;
+
 	font-style: italic;
+
 }
 
 .err-explanation:before {
@@ -171,9 +182,9 @@ body {
 	transition: all 0.3s;
 }
 
-/*.content.shrunk {
-	margin-left: 250px;
-}*/
+.content.shrunk {
+	//margin-left: 250px;
+}
 
 .header {
 	position: absolute;
@@ -372,27 +383,18 @@ main {
 
 .message {
 	position: relative;
-	width: 235px;
 	max-height: 80px;
 	padding: 5px 10px;
 	margin-bottom: 7px;
 	border-radius: 3px;
-	border: 1px solid #E1E1E1;
-
 	color: #848484;
 	background: #fff;
 	font-size: 10px;
-	transition: opacity 3s;
-}
-
-.notification-fade {
-	opacity: 0;
 }
 
 .message-important {
 	color: #fff;
 	background: #db3045;
-	border: 1px solid #fff;
 	fill: #fff;
 }
 
@@ -414,7 +416,7 @@ main {
 }
 
 .message-svg--question {
-	fill: #FF9800
+	fill: #ff9a03;
 }
 
 .message-header-text {
@@ -520,7 +522,6 @@ main {
 
 .payment {
 	display: flex;
-	align-items: center;
 	margin-bottom: 8px;
 	border-radius: 5px;
 	border: 2px solid #fff;
@@ -545,29 +546,36 @@ main {
 	width: 20%;
 }
 
-.search-results-product,
-.search-results-currency,
-.search-results-amount,
-.search-results-result,
-.search-results-status {
+.search-results-product {
 	width: 10%;
 }
 
 .search-results-transfer {
-	width: 14%;
+	width: 10%;
+}
+
+.search-results-currency {
+	width: 10%;
+}
+
+.search-results-amount {
+	width: 10%;
 }
 
 .search-results-date {
-	width: 15%;
+	width: 10%;
+}
+
+.search-results-result {
+	width: 10%;
+}
+
+.search-results-status {
+	width: 10%;
 }
 
 .search-results-other {
-	width: 26%;
-  margin-left: 100px;
-}
-
-.search-results-action {
-	width: 13%;
+	width: 5%;
 }
 
 .circle {
@@ -645,12 +653,6 @@ main {
 
 .payout .search-results-icon {
 	background: #cdcdcd;
-}
-
-.no-results {
-	color: #dc3545;
-	font-size: 16px;
-	text-align: center;
 }
 
 /*Selected payments*/
@@ -821,25 +823,18 @@ main {
 
 .dark-screen {
 	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 100;
+	display: none;
+	z-index: 4;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
+	display: none;
 	background: rgba(0,0,0,0.7);
 }
 
-/*Vue animation*/
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
-}
-
-.fade-enter, 
-.fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0
+.dark-screen.visible {
+	display: block;
 }
 
 .hot-keys {
@@ -893,39 +888,6 @@ main {
 	display: block;
 }
 
-.modal-header .modal-title {
-	text-align: center;
-}
-
-/* financial monitoring notification */
-.modal {
-	background: rgba(0,0,0,0.7);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.model-content {
-	margin: 0;
-}
-/* financial monitoring notification */
-
-.fp-space-between {
-	justify-content: space-between;
-}
-
-.fp-btn-primary {
-	color: #fff;
-	background-color: #E3003E;
-	border-color: #dc3545;
-}
-
-.fp-btn-secondary {
-	color: #000;
-	background-color: #fff;
-	border-color: #9a9a9a;
-}
-
 .hot-key-hint--bottom {
 	top: auto;
 	right: -7px;
@@ -940,9 +902,8 @@ main {
 
 .payment-form {
 	flex-wrap: wrap;
-	justify-content: center;
 	height: 100%;
-/*	overflow: auto;*/
+	overflow: auto;
 	padding: 0 70px 0 20px;
 }
 
@@ -958,10 +919,6 @@ main {
 .receiver-data,
 .amount-data {
 	width: 25%;
-}
-
-.amount-data .form-control {
-	text-align: right;
 }
 
 fieldset:not(:first-child) .form-section {
@@ -991,7 +948,7 @@ fieldset:not(:first-child) .form-section {
 	font-weight: 400;
 }
 
-.warning:focus + .err-explanation {
+input.warning:focus + .err-explanation {
 	display: block;
 }
 
@@ -1001,15 +958,7 @@ fieldset:not(:first-child) .form-section {
 	color: #424960;
 	font-size: 14px;
 	font-weight: 300;
-}
-
-.payment-form .form-control.empty {
 	font-style: italic;
-}
-
-.payment-form input::placeholder,
-.payment-form textarea::placeholder {
-	color: #424960;
 }
 
 .payment-form select.select-field.form-control {
@@ -1021,7 +970,7 @@ fieldset:not(:first-child) .form-section {
 }
 
 .payment-form .input-amount {
-	padding: 15px 12px;
+	padding: 15px 25px;
 	font-size: 18px;
 }
 
@@ -1030,13 +979,10 @@ fieldset:not(:first-child) .form-section {
 }
 
 .form-info {
-	width: auto;
-	min-width: 300px;
+	width: 100%;
 	position: absolute;
-	left: 50%;
-	bottom: 0;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
+	left: 0;
+	bottom: 30px;
 }
 
 .form-info p {
@@ -1056,230 +1002,4 @@ fieldset:not(:first-child) .form-section {
 	margin: 0 auto;
 	padding: 13px 30px;
 	font-size: 14px;
-}
-
-.form-info .d-flex button {
-	margin: 0 10px;
-}
-
-.additional {
-	padding-bottom: 40px;
-}
-
-.btn-clear.btn-secondary {
-	color: #c82333;
-	border-color: #c82333;
-}
-
-.btn-clear.btn-secondary:hover,
-.btn-clear.btn-secondary:active,
-.btn-clear.btn-secondary:focus  {
-	color: #c82333;
-	background-color: #fdf8f8;
-	border-color: #c82333;
-}
-
-.btn-clear.btn-secondary:focus {
-	box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.5);
-}
-
-/*Cashdesk screen*/
-
-.cashdeskControl {
-	text-align: center;
-}
-
-.error-info {
-	color: #db3045;
-	font-size: 16px;
-	text-align: center;
-}
-
-.message-out-of-panel {
-	position: absolute;
-	z-index: 5;
-	top: 98px;
-	right: 15px;
-	transition: all 0.5s;
-}
-
-.message-out-of-panel .message {
-	max-height: none;
-}
-
-.message-out-of-panel .message-content {
-	display: block;
-}
-
-.cashider-info {
-	padding: 20px;
-}
-
-.card {
-	width: 300px;
-	margin: 0 20px;
-	text-align: left;
-}
-
-.card-title {
-	text-align: center;
-}
-
-.card-block {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 auto;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
-	padding: 1.25rem;
-}
-
-.card-balance {
-	font-size: 20px;
-	text-align: center;
-}
-
-.card-form {
-	display: flex;
-	justify-content: stretch;
-	margin: 10px 0;
-}
-
-.card-form input {
-	width: 60%;
-	margin-right: 5%;
-}
-
-.card-form button {
-	width: 35%;
-}
-
-/*Balance widget*/
-
-.balance-widget {
-  position: absolute;
-  top: 0;
-  right: 0;
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-  color: #fff;
-  //background: #d9534f;
-  background-color: #dc3545;
-  border-color: #dc3545;
-  text-align: center;
-  font-weight: bold;
-}
-
-.balance-widget p {
-	margin: 0 auto;
-}
-
-/*Operation journal*/
-
-.journal-operationNumber {
-	width: 8%;
-}
-
-.journal-product,
-.journal-operationType,
-.journal-documentNumber {
-	width: 10%;
-}
-
-.journal-date,
-.journal-time,
-.journal-paymentType,
-.journal-RRN {
-	width: 8%;
-}
-
-.journal-operationAmount,
-.journal-operationFee {
-	width: 8%;
-}
-
-.journal-nomenclature {
-	width: 24%;
-}
-
-/*Modal windows*/
-
-.fin-mon-notification {
-	display: block;
-	color: #212529;
-}
-
-.fin-mon-notification ol {
-	padding: 0;
-	list-style-position: inside;
-}
-
-.fin-mon-notification li {
-	margin-bottom: 15px;
-}
-
-/*Payout confirmation*/
-
-.confirm {
-	width: 425px;
-	padding: 20px 15px;
-	border: 1px solid #dc3545;
-	border-radius: 3px;
-	background: #fff;
-}
-
-.confirm .btn {
-	margin: 0 10px;
-	font-size: 14px;
-}
-
-.confirm-message {
-	margin-bottom: 25px;
-	text-align: center;
-}
-
-.confirm-amount {
-	display: block;
-}
-
-.btn-secondary {
-	color: #292b2c;
-    background-color: #fff;
-    border-color: #ccc;
-}
-
-.btn-secondary:hover {
-    color: #292b2c;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-}
-
-
-/* Calendar */
-@font-face {
-	font-family: 'Glyphicons Halflings';
-	src: url('../glyphicons-halflings-regular.woff2') format('woff2')
-}
-
-.glyphicon {
-	position: relative;
-	top: 1px;
-	display: inline-block;
-	font-family: 'Glyphicons Halflings';
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.glyphicon-chevron-left::before { content: "\e079"; }
-.glyphicon-chevron-right::before { content: "\e080"; }
-
-.calendar-picker {
-  height: 300px;
-  z-index: 1000;
-  position: absolute;
 }
