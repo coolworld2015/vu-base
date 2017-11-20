@@ -67,8 +67,8 @@
     },
     methods: {
       fetchData() {
-        //this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
-        this.$http.get('http://localhost:3000/api/audit/get')
+        this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
+        //this.$http.get('http://localhost:3000/api/audit/get')
           .then(result => {
             appConfig.audits.items = result.data;
             this.items = result.data.slice(0, 20);

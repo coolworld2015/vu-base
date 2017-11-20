@@ -7,11 +7,11 @@
 					box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5); text-align: center;">
 				<div class="col-sm-12 d-flex flex-column justify-content-around">
 					<form class="align-self-center login-form" autocomplete="off">
+						<p class="h5" style="font-weight: bold;">Base09</p>
 						<img src="../../assets/img/logo.jpg" style="margin-bottom: 10px; width: 200px;"> 
-						<p class="h5 form-header">Вхід в систему</p>
-						<input v-model="name" type="text" class="form-control login-input" id="user" placeholder="Ім'я користувача">
-						<input v-model="pass" type="text" class="form-control login-input" id="password" placeholder="Пароль">
-						<input type="submit" value="Увійти" class="btn btn-danger button-login" id="login" v-on:click="fetchData">
+						<input v-model="name" type="text" class="form-control login-input" id="user" placeholder="Login">
+						<input v-model="pass" type="text" class="form-control login-input" id="password" placeholder="Password">
+						<input type="submit" value="Submit" class="btn btn-danger button-login" id="login" v-on:click="fetchData">
 						<br><span v-show="error" style="font-weight: bold; font-size: 14px; color: #dc3545">Access denied</span>
 						<img v-show="loading" src="../../assets/img/loading.gif" style="margin-bottom: -90px; margin-top: -60px;">
 					</form>
