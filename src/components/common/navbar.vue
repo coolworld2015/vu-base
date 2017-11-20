@@ -3,7 +3,7 @@
 		<nav class="h-100 fp-navbar" onclick="event.preventDefault();return false">
 			<ul class="h-100 fp-nav-right">
 				  
-				<img src="../../assets/img/logo.jpg" style="width1: 250px; height: 50px; margin-right: 30px;" v-on:click="changeView()" />  
+				<img src="../../assets/img/logo.jpg" style="width1: 250px; height: 50px; margin-right: 10px;" v-on:click="changeView()" />  
 				<span style="font-weight: bold; color: white; font-size: 20px;"> Base 09 </span>
 				 
 				 
