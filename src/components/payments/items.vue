@@ -94,7 +94,7 @@ export default {
 				//console.log(position);
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
-				this.positionY = positionY + 600;
+				this.positionY = positionY + 400;
 			}
 		},
 		onItem(item) {

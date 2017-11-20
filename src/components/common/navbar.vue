@@ -3,10 +3,12 @@
 		<nav class="h-100 fp-navbar" onclick="event.preventDefault();return false">
 			<ul class="h-100 fp-nav-right">
 				  
-				<img src="../../assets/img/logo.jpg" style="width: 250px; height: 50px;" v-on:click="changeView()" />  
+				<img src="../../assets/img/logo.jpg" style="width1: 250px; height: 50px; margin-right: 30px;" v-on:click="changeView()" />  
+				<span style="font-weight: bold; color: white; font-size: 20px;"> Base 09 </span>
+				 
 				 
 				<li class="fp-nav-item fp-nav-item-right">
-					<a class="fp-nav-link menu-block-header" href="#">Платежі</a>
+					<a class="fp-nav-link menu-block-header" href="#">Base 09</a>
 				</li>
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('payments')" v-bind:class="{ active: payments }">
 					<a class="fp-nav-link" href="#">Миттєвий</a>
