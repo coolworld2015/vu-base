@@ -42,7 +42,6 @@ export default {
 		fetchData() {
 			this.loading = true;
 			this.error = false;
-			//this.$http.get('https://ui-base.herokuapp.com/api/audit/get')
 			this.$http.post('https://jwt-base.herokuapp.com/api/login', 
 				{
 					name: this.name,
@@ -53,23 +52,12 @@ export default {
 					appConfig.access_token = result.body.token;
 					this.loading = false;
 					this.error = false;
-					this.addAudit();
-					this.$router.push('/test2');
+					this.$router.push('/phones');
 				})
 				.catch((error)=> {
 					this.loading = false;
 					this.error = true;
 				})
-		},
-		addAudit() {
-			this.$http.post('http://localhost:3000/api/audit/add', {
-				id: +new Date(),
-				user: this.name,
-				user_id: 'Wdcj8gLoY3VSbydap',
-				user_role: 'Кассир',
-				rro_id: 'АТ402006977',
-				description: 'Вход в систему'
-			})
 		}	
 	}
 }
