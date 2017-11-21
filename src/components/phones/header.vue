@@ -2,8 +2,13 @@
 	<header class="header d-flex justify-content-center align-items-center">
 		<form class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
 			<input type="text" class="form-control" placeholder="Поиск абонента" 
-			v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
-			<svg class="search-form-svg"><use xlink:href="#maginifierTool"></use></svg>
+				v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+				
+			<div v-on:click="searchName">
+				<svg class="search-form-svg">
+					<use xlink:href="#maginifierTool" ></use>
+				</svg>
+			</div>
 			<span class="hot-key-hint hot-key-hint--left">/</span>
 		</form>
 
@@ -36,6 +41,9 @@ export default {
 		searchClear() {
 			this.searchQuery = '';
 			appConfig.$emit('searchQuery', this.searchQuery);
+		},
+		searchName() {
+			appConfig.$emit('searchName', this.searchQuery);
 		}
 	}	
 }

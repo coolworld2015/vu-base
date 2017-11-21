@@ -64,6 +64,24 @@ export default {
 				this.filteredItems = appConfig.phones.items;
 			}
 		})
+		appConfig.$on('searchName', searchQuery => {
+ 
+				console.log(searchQuery)
+				if (searchQuery !== '') {
+				this.status = 'loading';
+				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByName/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
+					.then(result => {
+						appConfig.phones.items = result.data.sort(this.sort);
+						this.items = result.data.sort(this.sort).slice(0, 20);
+						this.filteredItems = result.data.sort(this.sort);
+						this.status = 'show';
+						appConfig.$emit('itemsCount', result.data.length);
+						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
+					}).catch((error)=> {
+						this.status = 'error';
+					})
+				}
+		})
 	},
 	methods: {
 		fetchData() {
@@ -92,7 +110,7 @@ export default {
  
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
-				this.positionY = positionY + 600;
+				this.positionY = positionY + 400;
  
 			}
 		},

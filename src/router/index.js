@@ -8,9 +8,6 @@ import Test3 from '@/components/common/test3';
 import Test4 from '@/components/common/test4';
 import Test5 from '@/components/common/test5';
 
-import Payments from '@/components/payments/payments';
-import PaymentEdit from '@/components/payments/edit';
-
 import Users from '@/components/users/users';
 import UserEdit from '@/components/users/edit';
 import UserAdd from '@/components/users/add';
@@ -29,9 +26,6 @@ export default new Router({
     { path: '/test3', component: Test3 },
     { path: '/test4', component: Test4 },
     { path: '/test5', component: Test5 },
-	
-    { path: '/payments', component: Payments },
-	{ path: '/payment-edit', component: PaymentEdit },
 	
     { path: '/users', component: Users },
     { path: '/user-edit', component: UserEdit },

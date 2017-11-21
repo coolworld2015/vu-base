@@ -20,7 +20,7 @@
 				</li>				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
-					<a class="fp-nav-link" href="#">Find</a>
+					<a class="fp-nav-link" href="#">Search</a>
 				</li>
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('audits')" 
 					v-bind:class="{ active: audits }">
@@ -49,7 +49,7 @@
 				</li>				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
-					<a class="fp-nav-link" href="#" title="Find">FI</a>
+					<a class="fp-nav-link" href="#" title="Find">SR</a>
 					<span class="hot-key-hint">2</span>
 				</li>
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('audits')" 
