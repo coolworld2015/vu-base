@@ -12,7 +12,9 @@
 						<input v-model="name" type="text" class="form-control login-input" id="user" placeholder="Login">
 						<input v-model="pass" type="text" class="form-control login-input" id="password" placeholder="Password">
 						<input type="submit" value="Submit" class="btn btn-danger button-login" id="login" v-on:click="fetchData">
-						<br><span v-show="error" style="font-weight: bold; font-size: 14px; color: #dc3545">Access denied</span>
+						<div style="font-weight: bold; font-size: 14px; color: #dc3545; margin-top: 15px">
+							<span v-show="error" >Access denied</span>
+						</div>
 						<img v-show="loading" src="../../assets/img/loading.gif" style="margin-bottom: -90px; margin-top: -60px;">
 					</form>
 				</div>
