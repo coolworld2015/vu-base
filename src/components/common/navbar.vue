@@ -29,6 +29,10 @@
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('users')" 
 					v-bind:class="{ active: users }">
 					<a class="fp-nav-link" href="#">Users</a>
+				</li>				
+				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('')" 
+					v-bind:class="{ active: logout }">
+					<a class="fp-nav-link" href="#">LogOut</a>
 				</li>
 			</ul>
 			
@@ -60,6 +64,11 @@
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('users')" 
 					v-bind:class="{ active: users }">
 					<a class="fp-nav-link" href="#" title="Users">US</a>
+					<span class="hot-key-hint">5</span>
+				</li>				
+				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('')" 
+					v-bind:class="{ active: logout }">
+					<a class="fp-nav-link" href="#" title="LogOut">LO</a>
 					<span class="hot-key-hint">5</span>
 				</li>
 			</ul>
