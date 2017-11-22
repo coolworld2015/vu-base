@@ -18,10 +18,12 @@
 					v-bind:class="{ active: phones }">
 					<a class="fp-nav-link" href="#">Phones</a>
 				</li>				
+<!--				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
 					<a class="fp-nav-link" href="#">Search</a>
 				</li>
+-->
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('audits')" 
 					v-bind:class="{ active: audits }">
 					<a class="fp-nav-link" href="#">Audits</a>
@@ -32,7 +34,7 @@
 				</li>				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('')" 
 					v-bind:class="{ active: logout }">
-					<a class="fp-nav-link" href="#">LogOut</a>
+					<a class="fp-nav-link" href="#">Logout</a>
 				</li>
 			</ul>
 			
@@ -51,11 +53,13 @@
 					<a class="fp-nav-link" href="#" title="Phones">PH</a>
 					<span class="hot-key-hint">2</span>
 				</li>				
+<!--				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
 					<a class="fp-nav-link" href="#" title="Find">SR</a>
 					<span class="hot-key-hint">2</span>
 				</li>
+-->
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('audits')" 
 					v-bind:class="{ active: audits }">
 					<a class="fp-nav-link" href="#" title="Audits">AU</a>
@@ -68,7 +72,7 @@
 				</li>				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('')" 
 					v-bind:class="{ active: logout }">
-					<a class="fp-nav-link" href="#" title="LogOut">LO</a>
+					<a class="fp-nav-link" href="#" title="Logout">LO</a>
 					<span class="hot-key-hint">5</span>
 				</li>
 			</ul>

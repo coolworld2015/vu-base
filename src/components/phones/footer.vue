@@ -2,8 +2,9 @@
 	<section class="activated-payments d-flex justify-content-start align-items-center shown" id="activatedPayments">
 		<div class="activated-payments-item">
 			<span class="selected-payments" id="activatedPaymentsBox" style="width: 44px;">{{ count }}</span>
-			Платежів
+			Records
 		</div>
+<!--
 		<div class="activated-payments-item" v-on:click="addItem">
 			<button class="" id="cancelSelection">
 				<svg class="activated-payments-svg"><use xlink:href="#cancel"></use></svg>
@@ -30,6 +31,7 @@
 			<span class="hint">esc</span>
 			Зняти виділення
 		</div> 
+-->
 	</section>	
 </template>
 

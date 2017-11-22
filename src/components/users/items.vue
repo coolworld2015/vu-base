@@ -8,14 +8,11 @@
 
   <div v-else-if="status === 'show'" class="search-results-content">
     <div class="payment" v-for="item in items" v-on:click="showDetails(item)">
-      <div class="search-results-item search-results-choose"style="width: 5%;"><span class="circle"></span></div>
+      <div class="search-results-item search-results-choose" style="width: 5%;"><span class="circle"></span></div>
+      <div class="search-results-item search-results-transfer" style="width: 25%;">{{ item.id }}</div>
       <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.name }}</div>
       <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.pass }}</div>
       <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.description }}</div>
-      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.id }}</div>
-      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.description }}</div>
-<!--      <div class="search-results-item search-results-transfer" style="width: 10%;">{{ item.description }}</div>-->
-
 
     </div>
   </div>
@@ -88,7 +85,7 @@ export default {
 				//console.log(position);
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
-				this.positionY = positionY + 600;
+				this.positionY = positionY + 400;
 			}
 		},
 		onItem(item) {

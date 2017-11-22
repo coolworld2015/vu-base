@@ -8,13 +8,12 @@
     </form>
 
     <div class="search-results-header">
-      <div class="search-results-item search-results-choose"></div>
-      <div class="search-results-item search-results-sender" style="width: 20%; padding-left: 0px;">Користувач</div>
-      <div class="search-results-item search-results-product"style="width: 20%; right: 0px;">Пароль</div>
-      <div class="search-results-item search-results-sender" style="width: 20%; padding-left: 10px;">Роль</div>
-      <div class="search-results-item search-results-amount" style="width: 20%; right: 0px;">ПНФП</div>
-      <div class="search-results-item search-results-amount" style="width: 20%; right: 20px;">РРО</div>
-      <!--<div class="search-results-item search-results-amount" style="width: 10%; padding-left: 20px;">Опис</div>-->
+      <div class="search-results-item search-results-choose" style="width: 5%;"></div>
+      <div class="search-results-item search-results-sender" style="width: 25%; padding-left: 40px;">ID</div>
+      <div class="search-results-item search-results-product"style="width: 20%; right: 0px;">Login</div>
+      <div class="search-results-item search-results-sender" style="width: 20%; padding-left: 10px;">Password</div>
+      <div class="search-results-item search-results-amount" style="width: 20%; right: 0px;">Description</div>
+
 
     </div>
   </header>
