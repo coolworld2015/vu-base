@@ -9,11 +9,11 @@
 
 		<div class="search-results-header">
 			<div class="search-results-item search-results-choose"></div>
-			<div class="search-results-item search-results-sender" style="width: 20%; padding-left: 20px;">Действие</div>
-			<div class="search-results-item search-results-product"style="width: 15%; right: 20px;">Пользователь</div>
-			<div class="search-results-item search-results-sender" style="width: 15%; padding-left: 10px;">Роль</div>
-			<div class="search-results-item search-results-transfer" style="width: 20%; padding-left: 40px;">Дата</div>
-			<div class="search-results-item search-results-amount" style="width: 20%; padding-left: 20px;">РРО</div>
+			<div class="search-results-item search-results-sender" style="width: 20%; padding-left: 20px;">ID</div>
+			<div class="search-results-item search-results-product"style="width: 15%; right: 20px;">User</div>
+			<div class="search-results-item search-results-transfer" style="width: 20%; padding-left: 40px;">Date</div>
+			<div class="search-results-item search-results-sender" style="width: 15%; padding-left: 10px;">IP</div>
+			<div class="search-results-item search-results-amount" style="width: 20%; padding-left: 20px;">Description</div>
  
 		</div>
 	</header>	

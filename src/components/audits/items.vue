@@ -11,11 +11,11 @@
          v-bind:class="{ selected: (item.id == selectedItem && clicked)}"
          v-on:click="selectItem(item.id)">
       <div class="search-results-item search-results-choose"><span class="circle"></span></div>
-      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.description }}</div>
-      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.user }}</div>
-      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.user_role }}</div>
-      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.date }}</div>
-      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.rro_id }}</div>
+      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.id }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 15%;">{{ item.name }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.date }}</div>
+      <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.ip }}</div>
+      <div class="search-results-item search-results-transfer" style="width: 20%;">{{ item.description }}</div>
  
 
     </div>

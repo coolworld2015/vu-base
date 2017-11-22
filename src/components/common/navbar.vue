@@ -91,6 +91,7 @@ export default {
 				audits: null,
 				users: null,
 				login: null,
+				logout: null,
 				test: null,
 				test1: null,
 				test2: null,
