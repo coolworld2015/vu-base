@@ -772,6 +772,7 @@ main {
 
 .fp-nav-item-left {
 	background-color: #E3003E;
+	text-shadow: #000 0.15em 0.15em 0.15em;
 }
 
 .fp-nav-item-left.active {
@@ -780,6 +781,7 @@ main {
 
 .fp-nav-item-right {
 	background-color: #CA0038;
+	text-shadow: #000 0.15em 0.15em 0.15em;
 }
 
 .fp-nav-item-right.active {
