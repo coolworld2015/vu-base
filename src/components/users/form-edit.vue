@@ -6,32 +6,25 @@
   </div>
 
   <div v-else>
+	<div style="margin: auto; width: 25%; font-size: 22px; font-weight: bold; margin-bottom: 10px;">
+		<div style="text-align: center; padding-right: 40px;">{{ name }}</div>
+	</div>
     <form class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">
       <fieldset class="sender-data form-section-wrapper">
-        <legend>Користувач: {{ name }}</legend>
-
         <div class="form-section" style="width: 100%;">
           <div class="form-group">
-            <label for="senderSurname">Користувач</label>
-            <input type="text" class="form-control" id="senderSurname" placeholder="Користувач" v-model="name">
+            <label for="senderSurname">Login</label>
+            <input type="text" class="form-control" id="senderSurname" placeholder="Login" v-model="name">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть прізвище відправника.
             </div>
           </div>
 
           <div class="form-group">
-            <label for="senderName">Пароль</label>
-            <input type="text" class="form-control" id="senderName" placeholder="Пароль" v-model="pass">
+            <label for="senderName">Password</label>
+            <input type="text" class="form-control" id="senderName" placeholder="Password" v-model="pass">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть ім'я відправника.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="senderPatronymic">ID</label>
-            <input type="text" class="form-control" id="senderPatronymic" placeholder="ID" v-model="id">
-            <div class="invalid-feedback">
-              Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
 
@@ -42,17 +35,15 @@
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
-
+ 
+		  <div class="d-flex justify-content-center" style="margin-top: 30px;">
+			<button class="btn btn-danger" v-on:click="updateItem" style="margin: 10px; width: 100px; font-size: 14px;">Submit</button>
+			<button class="btn btn-danger" v-on:click="deleteConfirm" style="margin: 10px; width: 100px; font-size: 14px;">Delete</button>
+		  </div>
+ 
         </div>
       </fieldset>
     </form>
-
-    <div class="form-info">
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-danger" v-on:click="updateItem">Відправити</button>
-        <button class="btn btn-danger" v-on:click="deleteConfirm">Видалити</button>
-      </div>
-    </div>
 
   </div>
 </template>
