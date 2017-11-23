@@ -88,7 +88,7 @@ export default {
 			appConfig.$emit('showModal', {
 			  elName: 'modal-confirmation',
 			  confirm: this.deleteItem,
-			  html: `Ви дійсно хочете видалити користувача <span class="confirm-amount">${ this.name }?</span>`
+			  html: `Are you sure want to delete user <span class="confirm-amount">${ this.name }?</span>`
 			})
 		},
 		deleteItem() {

@@ -2,8 +2,8 @@
   <div class="confirm">
     <p class="confirm-message" v-html="html"></p>
     <div class="d-flex justify-content-center">
-      <button class="btn btn-danger" v-on:click="confirmModal">Підтвердити</button>
-      <button class="btn btn-secondary" v-on:click="cancelModal">Відмінити</button>
+      <button class="btn btn-danger" v-on:click="confirmModal">Delete</button>
+      <button class="btn btn-secondary" v-on:click="cancelModal">Cancel</button>
     </div>
   </div>
 </template>

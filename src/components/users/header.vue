@@ -1,7 +1,7 @@
 <template>
   <header class="header d-flex justify-content-center align-items-center">
     <form class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
-      <input type="text" class="form-control" placeholder="Пошук користувача"
+      <input type="text" class="form-control" placeholder="Search by login"
              v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
       <svg class="search-form-svg"><use xlink:href="#maginifierTool"></use></svg>
       <span class="hot-key-hint hot-key-hint--left">/</span>

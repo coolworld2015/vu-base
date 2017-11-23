@@ -1,7 +1,7 @@
 <template>
 	<header class="header d-flex justify-content-center align-items-center">
 		<form class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
-			<input type="text" class="form-control" placeholder="Поиск абонента" 
+			<input type="text" class="form-control" placeholder="Search by name" 
 				v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
 				
 			<div v-on:click="searchName">
@@ -14,12 +14,12 @@
 
 		<div class="search-results-header">
 			<div class="search-results-item search-results-choose"></div>
-			<div class="search-results-item search-results-sender" style="left: 25px;">ФИО</div>
-			<div class="search-results-item search-results-product">Телефон</div>
-			<div class="search-results-item search-results-sender" style="left: 25px;">Улица</div>
-			<div class="search-results-item search-results-transfer" style="left: -15px;">Дом</div>
-			<div class="search-results-item search-results-amount" style="left: -25px;">Квартира</div>
-			<div class="search-results-item search-results-result">Индекс</div>
+			<div class="search-results-item search-results-sender" style="left: 25px;">Name</div>
+			<div class="search-results-item search-results-product">Phone</div>
+			<div class="search-results-item search-results-sender" style="left: 60px;">Street</div>
+			<div class="search-results-item search-results-transfer" style="left: 25px;">House</div>
+			<div class="search-results-item search-results-amount" style="left: 35px;">Apt</div>
+			<div class="search-results-item search-results-result" style="left: 55px;">ZIP Code</div>
 		</div>
 	</header>	
 </template>

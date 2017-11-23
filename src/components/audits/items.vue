@@ -49,7 +49,7 @@
       appConfig.$on('searchQuery', searchQuery => {
         this.searchQuery = searchQuery;
         let arr = [].concat(appConfig.audits.items);
-        let items = arr.filter((el) => el.id.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+        let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
         this.filteredItems = items;
         this.items = items.slice(0, 20);
         this.positionY = 0;
