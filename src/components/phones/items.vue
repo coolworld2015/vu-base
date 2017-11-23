@@ -49,10 +49,20 @@ export default {
 	},
 	created() {
 		this.fetchData();
-		appConfig.$on('searchQuery', searchQuery => {
+		appConfig.$on('searchQuery', (searchQuery, searchType) => {
+			console.log(searchType + ': ' + searchQuery)
 			this.searchQuery = searchQuery;
-			var arr = [].concat(appConfig.phones.items);
-			var items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+			let arr = [].concat(appConfig.phones.items);
+			let items = [];
+			
+			if (searchType == 'name') {
+				items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+			} 
+			
+			if (searchType == 'phone') {
+				items = arr.filter((el) => el.phone.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+			}
+			
 			this.filteredItems = items;
 			this.items = items.slice(0, 20);
 			this.positionY = 0;
@@ -65,11 +75,27 @@ export default {
 			}
 		})
 		appConfig.$on('searchName', searchQuery => {
- 
 				console.log(searchQuery)
 				if (searchQuery !== '') {
 				this.status = 'loading';
 				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByName/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
+					.then(result => {
+						appConfig.phones.items = result.data.sort(this.sort);
+						this.items = result.data.sort(this.sort).slice(0, 20);
+						this.filteredItems = result.data.sort(this.sort);
+						this.status = 'show';
+						appConfig.$emit('itemsCount', result.data.length);
+						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
+					}).catch((error)=> {
+						this.status = 'error';
+					})
+				}
+		}),
+		appConfig.$on('searchPhone', searchQuery => {
+				console.log(searchQuery)
+				if (searchQuery !== '') {
+				this.status = 'loading';
+				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
 					.then(result => {
 						appConfig.phones.items = result.data.sort(this.sort);
 						this.items = result.data.sort(this.sort).slice(0, 20);
