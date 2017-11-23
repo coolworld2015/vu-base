@@ -53,7 +53,7 @@ export default {
 			console.log(searchType + ': ' + searchQuery)
 			this.searchQuery = searchQuery;
 			let arr = [].concat(appConfig.phones.items);
-			let items = [];
+			let items = [].concat(appConfig.phones.items);
 			
 			if (searchType == 'name') {
 				items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
@@ -67,7 +67,7 @@ export default {
 			this.items = items.slice(0, 20);
 			this.positionY = 0;
 			this.recordsCount = 20;
-			
+			console.log(items.length)
 			appConfig.$emit('itemsCount', items.length);
 			if (searchQuery == '') {
 				this.items = appConfig.phones.items.slice(0, 20);
