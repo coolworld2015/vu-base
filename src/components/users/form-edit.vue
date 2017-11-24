@@ -68,6 +68,19 @@ export default {
 			this.$router.push('/users');
 		} else {
 			this.setData();
+			this.notification = {
+				title: 'Something went wrong',
+				message: 'Server responded with status code error',
+				important: true
+			}
+			this.notification1 = {
+				title: 'Item deleted',
+				message: `Item was deleted successfully`
+			}			
+			this.notification2 = {
+				title: 'Item updated',
+				message: `Item was updated successfully`
+			}
 		}
 	},
 	methods: {
@@ -92,27 +105,45 @@ export default {
 			})
 		},
 		deleteItem() {
-		  this.loading = true;
-		  this.$http.post('https://jwt-base.herokuapp.com/api/users/delete', {
-			id: this.id,
-			authorization: appConfig.access_token
-		  })
+			this.loading = true;
+			this.$http.post('https://jwt-base.herokuapp.com/api/users/delete', {
+				id: this.id,
+				authorization: appConfig.access_token
+			})
 			.then(result => {
-			  this.$router.push('/users');
+				if (result.body.error) {
+				appConfig.notifications.items.push(this.notification);
+				} else {
+				appConfig.notifications.items.push(this.notification1);
+				}
+				this.$router.push('/users');
+			})
+			.catch((error)=> {
+				appConfig.notifications.items.push(this.notification);
+				this.$router.push('/users');
 			})
 		},
 		updateItem() {
 			this.loading = true;
 			this.$http.post('https://jwt-base.herokuapp.com/api/users/update', {                
-					id: this.id,
-					name: this.name,
-					pass: this.pass,
-					description: this.description,
-					authorization: appConfig.access_token
-				})
-				.then(result => { 
-					this.$router.push('/users');
-				})
+				id: this.id,
+				name: this.name,
+				pass: this.pass,
+				description: this.description,
+				authorization: appConfig.access_token
+			})
+			.then(result => {
+				if (result.body.errors) {
+				appConfig.notifications.items.push(this.notification);
+				} else {
+				appConfig.notifications.items.push(this.notification2);
+				}
+				this.$router.push('/users');
+			})
+			.catch((error)=> {
+				appConfig.notifications.items.push(this.notification);
+				this.$router.push('/users');
+			})
 		},
 	}
 }
