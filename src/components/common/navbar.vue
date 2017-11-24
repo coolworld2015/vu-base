@@ -6,7 +6,7 @@
 					<img src="../../assets/img/logo.jpg" style="width1: 250px; height: 50px; margin-right: 10px; margin-top: -5px;" 
 						v-on:click="changeView()" 
 					/>  
-					<span style="font-weight: bold; color: white; font-size: 20px;">
+					<span style="font-weight: bold; color: white; font-size: 20px; text-shadow: #000 0.15em 0.15em 0.15em;">
 						Base 09 
 					</span>
 				</li>  								 

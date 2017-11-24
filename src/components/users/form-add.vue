@@ -64,23 +64,20 @@ export default {
 			pnfp: '',
 			receiverPhone: '',
 			receiverPhoneErr: false,
-			loading: false
+			loading: false,
+			status: ''
 		}
 	},
 	created() {
-               const notification = {
-                title: 'Недостатньо коштів у касі',
-                message: 'Увага! В касі недостатньо грошових коштів для здійснення повернення переказу. Необхідно здійснити підкріплення',
-                important: true
-              }
-			  const notification1 = {
-              title: 'Переказ повернуто',
-              message: `Переказ   повернуто успішно`
-            }
- 
-
-            appConfig.notifications.items.push(notification, notification1)
- 
+		this.notification = {
+			title: 'Something went wrong',
+			message: 'Server response status - Error',
+			important: true
+		}
+		this.notification1 = {
+			title: 'Item created',
+			message: `Item was created successfully`
+		}
 	},
 	methods: {
 		setData() {
@@ -114,10 +111,19 @@ export default {
 					description: this.description,
 					authorization: appConfig.access_token
 				})
-				.then(result => { 
+				.then(result => {
+					if (result.body.error) {
+						appConfig.notifications.items.push(this.notification);
+					} else {
+						appConfig.notifications.items.push(this.notification1);
+					}
 					this.$router.push('/users');
 				})
-		},
+				.catch((error)=> {
+					appConfig.notifications.items.push(this.notification);
+					this.$router.push('/users');
+				})
+		}
 	}
 }
 </script>

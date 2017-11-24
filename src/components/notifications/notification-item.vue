@@ -27,7 +27,7 @@
         time: this.currentTime(),
         fadeout: false,
         exists: true,
-        icon: this.important ? '#message' : '#question'
+        icon: this.important ? '#message' : '#message'
       }
     },
     props: {
@@ -41,8 +41,8 @@
           this.fadeout = true
           setTimeout(() => {
             this.exists = false
-          }, 3000)
-        }, 5000)
+          }, 2000)
+        }, 3000)
       }
     },
     methods: {
