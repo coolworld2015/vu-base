@@ -45,27 +45,31 @@
       }
     },
     created() {
-      this.fetchData();
-      appConfig.$on('searchQuery', searchQuery => {
-        this.searchQuery = searchQuery;
-        let arr = [].concat(appConfig.audits.items);
-        let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
-        this.filteredItems = items;
-        this.items = items.slice(0, 20);
-        this.positionY = 0;
-        this.recordsCount = 20;
+		this.fetchData();
+		this.notification = {
+			title: 'Something went wrong',
+			message: 'Server responded with status code error',
+			important: true
+		}
+		appConfig.$on('searchQuery', searchQuery => {
+			this.searchQuery = searchQuery;
+			let arr = [].concat(appConfig.audits.items);
+			let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+			this.filteredItems = items;
+			this.items = items.slice(0, 20);
+			this.positionY = 0;
+			this.recordsCount = 20;
 
-        appConfig.$emit('itemsCount', items.length);
-        if (searchQuery == '') {
-          this.items = appConfig.audits.items.slice(0, 20);
-          this.filteredItems = appConfig.audits.items;
-        }
-      })
+			appConfig.$emit('itemsCount', items.length);
+			if (searchQuery == '') {
+			  this.items = appConfig.audits.items.slice(0, 20);
+			  this.filteredItems = appConfig.audits.items;
+			}
+		})
     },
     methods: {
       fetchData() {
         this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
-        //this.$http.get('http://localhost:3000/api/audit/get')
           .then(result => {
             appConfig.audits.items = result.data;
             this.items = result.data.slice(0, 20);
@@ -76,7 +80,8 @@
               document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
             }, 100);
           }).catch((error) => {
-          this.status = 'error';
+				appConfig.notifications.items.push(this.notification);
+				this.status = 'show';
         })
       },
       handleScroll() {
@@ -87,13 +92,9 @@
         items = this.filteredItems.slice(0, recordsCount);
 
         if (position > positionY) {
-          //console.log(items.length);
-          //console.log(position);
-
           this.items = items;
           this.recordsCount = recordsCount + 10;
           this.positionY = positionY + 400;
-
         }
       },
       selectItem(id) {

@@ -71,7 +71,7 @@ export default {
 	created() {
 		this.notification = {
 			title: 'Something went wrong',
-			message: 'Server response status - Error',
+			message: 'Server responded with status code error',
 			important: true
 		}
 		this.notification1 = {

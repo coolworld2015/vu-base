@@ -49,6 +49,11 @@ export default {
 	},
 	created() {
 		this.fetchData();
+		this.notification = {
+			title: 'Something went wrong',
+			message: 'Server responded with status code error',
+			important: true
+		}
 		appConfig.$on('searchQuery', (searchQuery, searchType) => {
 			console.log(searchType + ': ' + searchQuery)
 			this.searchQuery = searchQuery;
@@ -87,7 +92,8 @@ export default {
 						appConfig.$emit('itemsCount', result.data.length);
 						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 					}).catch((error)=> {
-						this.status = 'error';
+						appConfig.notifications.items.push(this.notification);
+						this.status = 'show';
 					})
 				}
 		}),
@@ -104,7 +110,8 @@ export default {
 						appConfig.$emit('itemsCount', result.data.length);
 						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 					}).catch((error)=> {
-						this.status = 'error';
+						appConfig.notifications.items.push(this.notification);
+						this.status = 'show';
 					})
 				}
 		})
@@ -120,7 +127,8 @@ export default {
 					appConfig.$emit('itemsCount', result.data.length);
 					setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 				}).catch((error)=> {
-					this.status = 'error';
+					appConfig.notifications.items.push(this.notification);
+					this.status = 'show';
 				})
 		},
 		handleScroll() {
@@ -131,13 +139,9 @@ export default {
 			items = this.filteredItems.slice(0, recordsCount);
 			
 			if (position > positionY) {
-				//console.log(items.length);
-				//console.log(position);
- 
 				this.items = items;
 				this.recordsCount = recordsCount + 10;
 				this.positionY = positionY + 400;
- 
 			}
 		},
 		onItem(item) {
@@ -146,8 +150,6 @@ export default {
 			} else {
 				this.clicked = true;
 			}
-			//console.log(item.id);
-			//this.clicked = true;
 		},			
 		showDetails(item){
 			appConfig.phone = item;
