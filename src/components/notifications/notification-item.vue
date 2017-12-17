@@ -2,7 +2,7 @@
   <div v-if="exists" class="message" :class="{ 'message-important': important, 'notification-fade': fadeout }"
        v-on:click="click">
     <header class="message-header">
-      <svg class="message-svg" :class="{ 'message-svg--question': !important }">
+      <svg class="message-svg" :class="{ 'message-svg--creditCard': !important }">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="icon"></use>
       </svg>
       <span class="message-header-text">{{ title }}</span>
