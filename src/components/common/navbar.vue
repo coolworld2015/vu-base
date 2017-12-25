@@ -11,68 +11,68 @@
 					</span>
 				</li>  								 
 				<li class="fp-nav-item fp-nav-item-right">
-				  <a class="fp-nav-link menu-block-header" href="#">Base 09</a>
+				  <span class="fp-nav-link menu-block-header">Base 09</span>
 				</li>				
 				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: phones }">
-					<a class="fp-nav-link" href="#">Phones</a>
+					<span class="fp-nav-link">Phones</span>
 				</li>				
 <!--				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
-					<a class="fp-nav-link" href="#">Search</a>
+					<span class="fp-nav-link">Search</span>
 				</li>
 -->
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('audits')" 
 					v-bind:class="{ active: audits }">
-					<a class="fp-nav-link" href="#">Audits</a>
+					<span class="fp-nav-link">Audits</span>
 				</li>
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('users')" 
 					v-bind:class="{ active: users }">
-					<a class="fp-nav-link" href="#">Users</a>
+					<span class="fp-nav-link">Users</span>
 				</li>				
 				<li class="fp-nav-item fp-nav-item-right" v-on:click="changeRoute('')" 
 					v-bind:class="{ active: logout }">
-					<a class="fp-nav-link" href="#">Logout</a>
+					<span class="fp-nav-link">Logout</span>
 				</li>
 			</ul>
 			
 			<ul class="h-100 fp-nav-left">
 				<li class="fp-nav-item fp-nav-item-left li-border-bottom" v-on:click="changeView()">
-					<a class="fp-nav-link" href="#" id="showNav" title="Base 09">09</a>
+					<span class="fp-nav-link" id="showNav" title="Base 09">09</span>
 					<span class="hot-key-hint">~</span>
 				</li>
 				<li class="fp-nav-item fp-nav-item-left">
-				  <a class="fp-nav-link" href="#"></a>
+				  <span class="fp-nav-link"></span>
 				  <span class="hot-key-hint">1</span>
 				</li>
 				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: phones }">
-					<a class="fp-nav-link" href="#" title="Phones">PH</a>
+					<span class="fp-nav-link" title="Phones">PH</span>
 					<span class="hot-key-hint">2</span>
 				</li>				
 <!--				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('phones')" 
 					v-bind:class="{ active: find }">
-					<a class="fp-nav-link" href="#" title="Find">SR</a>
+					<span class="fp-nav-link" title="Find">SR</span>
 					<span class="hot-key-hint">2</span>
 				</li>
 -->
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('audits')" 
 					v-bind:class="{ active: audits }">
-					<a class="fp-nav-link" href="#" title="Audits">AU</a>
+					<span class="fp-nav-link" title="Audits">AU</span>
 					<span class="hot-key-hint">4</span>
 				</li>
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('users')" 
 					v-bind:class="{ active: users }">
-					<a class="fp-nav-link" href="#" title="Users">US</a>
+					<span class="fp-nav-link" title="Users">US</span>
 					<span class="hot-key-hint">5</span>
 				</li>				
 				<li class="fp-nav-item fp-nav-item-left" v-on:click="changeRoute('')" 
 					v-bind:class="{ active: logout }">
-					<a class="fp-nav-link" href="#" title="Logout">LO</a>
+					<span class="fp-nav-link" title="Logout">LO</span>
 					<span class="hot-key-hint">5</span>
 				</li>
 			</ul>

@@ -740,6 +740,7 @@ main {
 .fp-nav-link {
 	padding: 15px;
 	color: #fff;
+	cursor: pointer;
 }
 
 .fp-nav-left {
