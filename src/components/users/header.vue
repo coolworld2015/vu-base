@@ -31,11 +31,11 @@
     },
     methods: {
       changeView() {
-        appConfig.$emit('searchQuery', this.searchQuery);
+        appConfig.$emit('searchQueryUsers', this.searchQuery);
       },
       searchClear() {
         this.searchQuery = '';
-        appConfig.$emit('searchQuery', this.searchQuery);
+        appConfig.$emit('searchQueryUsers', this.searchQuery);
       }
     }
   }

@@ -48,7 +48,7 @@ export default {
 			message: 'Server responded with status code error',
 			important: true
 		}
-		appConfig.$on('searchQuery', searchQuery => {
+		appConfig.$on('searchQueryUsers', searchQuery => {
 			this.searchQuery = searchQuery;
 			var arr = [].concat(appConfig.users.items);
 			var items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);

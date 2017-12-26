@@ -31,7 +31,8 @@ export default {
 		if (!appConfig.access_token) {
 			this.$router.push('/login');
 		} 
-		appConfig.route = this.route;			
+		appConfig.route = this.route;		
+		appConfig.http = true;			
 	},
 	components: {
 		navbar:	navbar,

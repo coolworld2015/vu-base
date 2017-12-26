@@ -32,7 +32,7 @@
   import appConfig from '../../main';
 
   export default {
-    name: 'users-items',
+    name: 'audits-items',
     data() {
       return {
         items: [],
@@ -51,7 +51,7 @@
 			message: 'Server responded with status code error',
 			important: true
 		}
-		appConfig.$on('searchQuery', searchQuery => {
+		appConfig.$on('searchQueryAudits', searchQuery => {
 			this.searchQuery = searchQuery;
 			let arr = [].concat(appConfig.audits.items);
 			let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);

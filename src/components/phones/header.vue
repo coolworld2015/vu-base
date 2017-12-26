@@ -49,7 +49,6 @@ export default {
 	},
 	methods: {
 		changeSearch(value) {
-			console.log(value);
 			if (value == 'name') {
 				this.name = true;
 				this.phone = false;
@@ -63,17 +62,29 @@ export default {
 			}
 		},		
 		changeView() {
-			appConfig.$emit('searchQuery', this.searchQuery, this.searchType);
+			appConfig.$emit('searchQueryPhones', this.searchQuery, this.searchType);
 		},
 		searchClear() {
 			this.searchQuery = '';
-			appConfig.$emit('searchQuery', this.searchQuery);
+			appConfig.$emit('searchQueryPhones', this.searchQuery);
 		},
 		searchName() {
 			appConfig.$emit('searchName', this.searchQuery);
+			return;
+			if (appConfig.http) {
+				appConfig.$emit('searchName', this.searchQuery);
+			} else {
+				appConfig.http = false;			
+			}	
 		},
 		searchPhone() {
 			appConfig.$emit('searchPhone', this.searchQuery);
+			return;
+			if (appConfig.http) {
+				appConfig.$emit('searchPhone', this.searchQuery);
+			} else {
+				appConfig.http = false;			
+			}	
 		}
 	}	
 }

@@ -31,11 +31,11 @@ export default {
 	},
 	methods: {
 		changeView() {
-			appConfig.$emit('searchQuery', this.searchQuery);
+			appConfig.$emit('searchQueryAudits', this.searchQuery);
 		},
 		searchClear() {
 			this.searchQuery = '';
-			appConfig.$emit('searchQuery', this.searchQuery);
+			appConfig.$emit('searchQueryAudits', this.searchQuery);
 		}
 	}	
 }
