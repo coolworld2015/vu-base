@@ -57,6 +57,7 @@ export default {
 		}
 		appConfig.$on('clearHeader', () => {
 			this.status = 'show';
+			setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
 		})
 		appConfig.$on('searchQueryPhones', (searchQuery, searchType) => {
 			//console.log(searchType + ': ' + searchQuery)
