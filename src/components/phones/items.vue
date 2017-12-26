@@ -45,7 +45,7 @@ export default {
 		positionY: 0,
 		status: 'loading',
 		clicked: false,
-		searchQuery: 'aaa'
+		//searchQuery: null
 	  }
 	},
 	created() {
@@ -55,6 +55,9 @@ export default {
 			message: 'Server responded with status code error',
 			important: true
 		}
+		appConfig.$on('clearHeader', () => {
+			this.status = 'show';
+		})
 		appConfig.$on('searchQueryPhones', (searchQuery, searchType) => {
 			//console.log(searchType + ': ' + searchQuery)
 			this.searchQuery = searchQuery;
@@ -73,7 +76,6 @@ export default {
 			this.items = items.slice(0, 20);
 			this.positionY = 0;
 			this.recordsCount = 20;
-			//console.log(items.length)
 			appConfig.$emit('itemsCount', items.length);
 			if (searchQuery == '') {
 				this.items = appConfig.phones.items.slice(0, 20);
@@ -81,24 +83,23 @@ export default {
 			}
 		})
 		appConfig.$on('searchName', searchQuery => {
-				console.log(appConfig.http)
+				this.status = 'loading';
 				if (!appConfig.http) {
 					return;
 				}
 				
 				if (searchQuery !== '') {
-				this.status = 'loading';
 				appConfig.http = false;
 				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByName/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
 					.then(result => {
 						appConfig.phones.items = result.data.sort(this.sort);
 						this.items = result.data.sort(this.sort).slice(0, 20);
 						this.filteredItems = result.data.sort(this.sort);
-						this.status = 'show';
 						appConfig.$emit('itemsCount', result.data.length);
 						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
+						this.status = 'show';
 						appConfig.http = true;
-						//this.searchClear();
+						appConfig.$emit('clearHeader');
 					}).catch((error)=> {
 						appConfig.notifications.items.push(this.notification);
 						this.status = 'show';
@@ -107,24 +108,23 @@ export default {
 				}
 		}),
 		appConfig.$on('searchPhone', searchQuery => {
-				console.log(appConfig.http)
+				this.status = 'loading';
 				if (!appConfig.http) {
 					return;
 				}
 				
 				if (searchQuery !== '') {
-				this.status = 'loading';
 				appConfig.http = false;
 				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
 					.then(result => {
 						appConfig.phones.items = result.data.sort(this.sort);
 						this.items = result.data.sort(this.sort).slice(0, 20);
 						this.filteredItems = result.data.sort(this.sort);
-						this.status = 'show';
 						appConfig.$emit('itemsCount', result.data.length);
 						setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
+						this.status = 'show';
 						appConfig.http = true;
-						//this.searchClear();
+						appConfig.$emit('clearHeader');
 					}).catch((error)=> {
 						appConfig.notifications.items.push(this.notification);
 						this.status = 'show';
@@ -171,10 +171,6 @@ export default {
 		showDetails(item){
 			appConfig.phone = item;
 			this.$router.push('phone-edit');
-		},
-		searchClear() {
-			this.searchQuery = '';
-			appConfig.$emit('searchQueryPhones', this.searchQuery);
 		},
 		sort(a, b) {
 			let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();

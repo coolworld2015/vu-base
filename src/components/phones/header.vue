@@ -47,6 +47,11 @@ export default {
 		phone: false
 	  }
 	},
+	created() {
+		appConfig.$on('clearHeader', () => {
+			this.searchClear();
+		});
+	},
 	methods: {
 		changeSearch(value) {
 			if (value == 'name') {
@@ -69,22 +74,10 @@ export default {
 			appConfig.$emit('searchQueryPhones', this.searchQuery);
 		},
 		searchName() {
-			appConfig.$emit('searchName', this.searchQuery);
-			return;
-			if (appConfig.http) {
-				appConfig.$emit('searchName', this.searchQuery);
-			} else {
-				appConfig.http = false;			
-			}	
+			appConfig.$emit('searchName', this.searchQuery);	
 		},
 		searchPhone() {
 			appConfig.$emit('searchPhone', this.searchQuery);
-			return;
-			if (appConfig.http) {
-				appConfig.$emit('searchPhone', this.searchQuery);
-			} else {
-				appConfig.http = false;			
-			}	
 		}
 	}	
 }
