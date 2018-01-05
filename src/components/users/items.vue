@@ -66,7 +66,7 @@ export default {
 	},
 	methods: {
 		fetchData() {
-			this.$http.get('https://jwt-base.herokuapp.com/api/users/get', {headers: {'Authorization': appConfig.access_token}})
+			this.$http.get(appConfig.URL + 'users/get', {headers: {'Authorization': appConfig.access_token}})
 				.then(result => {
 					appConfig.users.items = result.data.sort(this.sort);
 					this.items = result.data.sort(this.sort).slice(0, 20);

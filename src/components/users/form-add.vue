@@ -104,7 +104,7 @@ export default {
 		},
 		addItem() {
 			this.loading = true;
-			this.$http.post('https://ui-base.herokuapp.com/api/users/add', {                
+			this.$http.post(appConfig.URL + 'users/add', {                
 					id: +new Date,
 					name: this.name,
 					pass: this.pass,

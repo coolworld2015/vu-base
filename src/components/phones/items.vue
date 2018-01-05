@@ -101,7 +101,7 @@ export default {
 				
 				if (searchQuery !== '') {
 				appConfig.http = false;
-				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByName/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
+				this.$http.get(appConfig.URL + 'items/findByName/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
 					.then(result => {
 						appConfig.phones.items = result.data.sort(this.sort);
 						this.items = result.data.sort(this.sort).slice(0, 20);
@@ -126,7 +126,7 @@ export default {
 				
 				if (searchQuery !== '') {
 				appConfig.http = false;
-				this.$http.get('https://jwt-base.herokuapp.com/api/items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
+				this.$http.get(appConfig.URL + 'items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
 					.then(result => {
 						appConfig.phones.items = result.data.sort(this.sort);
 						this.items = result.data.sort(this.sort).slice(0, 20);
@@ -147,7 +147,7 @@ export default {
 	methods: {
 		fetchData() {
 			this.status = 'loading';
-			this.$http.get('https://jwt-base.herokuapp.com/api/items/get', {headers: {'Authorization': appConfig.access_token}})
+			this.$http.get(appConfig.URL + 'items/get', {headers: {'Authorization': appConfig.access_token}})
 				.then(result => {
 					appConfig.phones.items = result.data.sort(this.sort);
 					this.items = result.data.sort(this.sort).slice(0, 20);

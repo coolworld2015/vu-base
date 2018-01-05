@@ -12,7 +12,10 @@ import './assets/css/style.css'
 import './assets/css/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const appConfig = new Vue();
+appConfig.URL ='https://jwt-base.herokuapp.com/api/';
+
 appConfig.getAccessToken = ()=> {appConfig.access_token = localStorage.getItem('access_token');};
+
 appConfig.phones = { items: [], refresh: true };
 appConfig.audits = { items: [] };
 appConfig.users = { items: [] };

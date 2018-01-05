@@ -69,7 +69,7 @@
     },
     methods: {
       fetchData() {
-        this.$http.get('https://jwt-base.herokuapp.com/api/audit/get', {headers: {'Authorization': appConfig.access_token}})
+        this.$http.get(appConfig.URL + 'audit/get', {headers: {'Authorization': appConfig.access_token}})
           .then(result => {
             appConfig.audits.items = result.data;
             this.items = result.data.slice(0, 20);

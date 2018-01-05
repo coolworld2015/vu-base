@@ -106,7 +106,7 @@ export default {
 		},
 		deleteItem() {
 			this.loading = true;
-			this.$http.post('https://jwt-base.herokuapp.com/api/users/delete', {
+			this.$http.post(appConfig.URL + 'users/delete', {
 				id: this.id,
 				authorization: appConfig.access_token
 			})
@@ -125,7 +125,7 @@ export default {
 		},
 		updateItem() {
 			this.loading = true;
-			this.$http.post('https://jwt-base.herokuapp.com/api/users/update', {                
+			this.$http.post(appConfig.URL + 'users/update', {                
 				id: this.id,
 				name: this.name,
 				pass: this.pass,

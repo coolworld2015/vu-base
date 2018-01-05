@@ -37,10 +37,10 @@ export default {
 		appConfig.http = true;			
 	},
 	components: {
-		navbar:	navbar,
-		phonesHeader: phonesHeader,
-		phonesItems: phonesItems,
-		phonesFooter: phonesFooter
+		navbar,
+		phonesHeader,
+		phonesItems,
+		phonesFooter
 	}
 }
 </script>
