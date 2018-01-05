@@ -27,14 +27,14 @@ export default new Router({
     { path: '/test3', component: Test3 },
     { path: '/test4', component: Test4 },
     { path: '/test5', component: Test5 },
+		
+	{ path: '/phones', component: Phones },
+	{ path: '/phone-edit', component: PhoneEdit },
 	
     { path: '/users', component: Users },
     { path: '/user-edit', component: UserEdit },
     { path: '/user-add', component: UserAdd },
-	
-	{ path: '/phones', component: Phones },
-	{ path: '/phone-edit', component: PhoneEdit },
-	
+
 	{ path: '/audits', component: Audits },
 	{ path: '/audit-edit', component: AuditsEdit }
   ]
