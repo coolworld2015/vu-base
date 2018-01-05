@@ -15,7 +15,7 @@ import UserAdd from '@/components/users/add';
 import Phones from '@/components/phones/phones';
 import PhoneEdit from '@/components/phones/edit';
 
-import Audits from '@/components/audits/audit';
+import Audits from '@/components/audits/audits';
 import AuditsEdit from '@/components/audits/edit';
 
 export default new Router({

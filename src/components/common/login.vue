@@ -39,9 +39,12 @@ export default {
   },
 	created() {
 		appConfig.route = this.route;
-		appConfig.access_token = null;		
+		this.init();
 	},
 	methods: {
+		init() {
+			localStorage.setItem('access_token', 'login');
+		},
 		fetchData() {
 			this.loading = true;
 			this.error = false;
