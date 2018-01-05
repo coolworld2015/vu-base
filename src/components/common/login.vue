@@ -39,16 +39,13 @@ export default {
   },
 	created() {
 		appConfig.route = this.route;
-		this.init();
+		localStorage.setItem('access_token', 'login');
 	},
 	methods: {
-		init() {
-			localStorage.setItem('access_token', 'login');
-		},
 		fetchData() {
 			this.loading = true;
 			this.error = false;
-			this.$http.post('https://jwt-base.herokuapp.com/api/login', 
+			this.$http.post(appConfig.URL + 'login', 
 				{
 					name: this.name,
 					pass: this.pass,

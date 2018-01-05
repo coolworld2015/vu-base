@@ -37,10 +37,10 @@ export default {
 		appConfig.route = this.route;			
 	},
 	components: {
-		navbar:	navbar,
-		usersHeader: usersHeader,
-		usersItems: usersItems,
-		usersFooter: usersFooter
+		navbar,
+		usersHeader,
+		usersItems,
+		usersFooter
 	}
 }
 </script>
