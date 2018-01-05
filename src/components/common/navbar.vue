@@ -173,15 +173,12 @@ export default {
 
 				},				
 				changeView() {
-					console.log(this.route)
-					
 					if (this.isActive !== false) {
 						this.isActive = false;
 					}
 					else {
 						this.isActive = true;
 					}
-
 				},
 				searchClear() {
 					this.searchQuery = '';

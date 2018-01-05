@@ -50,7 +50,11 @@ export default {
 	created() { 
 		this.items = appConfig.phones.items.sort(this.sort).slice(0, 20);
 		this.filteredItems = appConfig.phones.items.sort(this.sort);
-		setTimeout(()=>{document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)}, 100);
+		setTimeout(()=> {
+			if (document.querySelector('.search-results-content')) {
+				document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
+			}
+		}, 100);
 		
 		if (appConfig.phones.refresh) {
             appConfig.phones.refresh = false;
