@@ -43,12 +43,19 @@ export default {
 		filteredItems: [],
 		recordsCount: 20,
 		positionY: 0,
-		status: 'loading',
+		status: 'show',
 		clicked: false,
 	  }
 	},
-	created() {
-		this.fetchData();
+	created() { 
+		this.items = appConfig.phones.items.sort(this.sort).slice(0, 20);
+		this.filteredItems = appConfig.phones.items.sort(this.sort);
+
+		if (appConfig.phones.refresh) {
+            appConfig.phones.refresh = false;
+			this.fetchData();
+		}			
+		
 		this.notification = {
 			title: 'Something went wrong',
 			message: 'Server responded with status code error',
