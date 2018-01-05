@@ -29,8 +29,9 @@ export default {
   },
 	created() {
 		if (!appConfig.access_token) {
-			this.$router.push('/login');
+			//this.$router.push('/login');
 		} 
+		appConfig.getAccessToken();
 		appConfig.route = this.route;		
 		appConfig.http = true;			
 	},

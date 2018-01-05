@@ -82,6 +82,7 @@
           }).catch((error) => {
 				appConfig.notifications.items.push(this.notification);
 				this.status = 'show';
+				this.$router.push('/login');
         })
       },
       handleScroll() {
@@ -100,7 +101,6 @@
       selectItem(id) {
         this.selectedItem = id;
         this.clicked = !this.clicked;
-        console.log(this.selectedItem)
       },
       onItem() {
         this.clicked = !this.clicked;

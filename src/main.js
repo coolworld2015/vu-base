@@ -12,12 +12,11 @@ import './assets/css/style.css'
 import './assets/css/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const appConfig = new Vue();
-appConfig.route ='Payments',
-appConfig.phones = { items: [] };
+appConfig.getAccessToken = ()=> {appConfig.access_token = localStorage.getItem('access_token');};
+appConfig.phones = { items: [], refresh: true };
 appConfig.audits = { items: [] };
 appConfig.users = { items: [] };
-appConfig.payments = { items: [] };
-appConfig.notifications = {items: []}
+appConfig.notifications = {items: []};
 export default appConfig;
 
 new Vue({
