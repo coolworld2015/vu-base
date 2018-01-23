@@ -10,7 +10,7 @@
 						<p class="h5" style="font-weight: bold;">Base09</p>
 						<img src="../../assets/img/logo.jpg" style="margin-bottom: 10px; width: 200px;"> 
 						<input v-model="name" type="text" class="form-control login-input" id="user" placeholder="Login">
-						<input v-model="pass" type="text" class="form-control login-input" id="password" placeholder="Password">
+						<input v-model="pass" type="password" class="form-control login-input" id="password" placeholder="Password">
 						<input type="submit" value="Submit" class="btn btn-danger button-login" id="login" v-on:click="fetchData">
 						<div style="font-weight: bold; font-size: 14px; color: #dc3545; margin-top: 15px">
 							<span v-show="error" >Access denied</span>
