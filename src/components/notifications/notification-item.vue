@@ -1,6 +1,6 @@
 <template>
   <div v-if="exists" class="message" :class="{ 'message-important': important, 'notification-fade': fadeout }"
-       v-on:click="click">
+       v-on:click="click" style="top: -80px;">
     <header class="message-header">
       <svg class="message-svg" :class="{ 'message-svg--creditCard': !important }">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="icon"></use>
@@ -41,8 +41,8 @@
           this.fadeout = true
           setTimeout(() => {
             this.exists = false
-          }, 2000)
-        }, 3000)
+          }, 3000)
+        }, 5000)
       }
     },
     methods: {
