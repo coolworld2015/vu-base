@@ -14,15 +14,20 @@
         <div class="form-section" style="width: 100%;">
           <div class="form-group">
             <label for="senderSurname">Login</label>
-            <input type="text" class="form-control" id="senderSurname" placeholder="Login" v-model="name">
-            <div class="invalid-feedback">
+            <input type="text" class="form-control" id="senderSurname" placeholder="Login" 
+				v-model="name"
+				v-on:keypress="clearWarning"
+				v-bind:class="{ warning: fieldsErrors.name }"><div class="invalid-feedback">
               Будь ласка, коректно вкажіть прізвище відправника.
             </div>
           </div>
 
           <div class="form-group">
             <label for="senderName">Password</label>
-            <input type="text" class="form-control" id="senderName" placeholder="Password" v-model="pass">
+            <input type="text" class="form-control" id="senderName" placeholder="Password" 
+				v-model="pass"
+				v-on:keypress="clearWarning"
+				v-bind:class="{ warning: fieldsErrors.pass }">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть ім'я відправника.
             </div>
@@ -30,13 +35,20 @@
 
           <div class="form-group">
             <label for="senderPatronymic">Description</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="Description" v-model="description">
+            <input type="text" class="form-control" id="senderPatronymic1" placeholder="Description" 
+				v-model="description"
+				v-on:keypress="clearWarning"
+				v-bind:class="{ warning: fieldsErrors.description }">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
- 
-		  <div class="d-flex justify-content-center" style="margin-top: 30px;">
+		  
+		  <div style="font-weight: bold; font-size: 14px; color: #dc3545; margin-top: 15px; text-align: center;">
+		    <span v-show="invalidValue" style="margin-left: 0px;">Value required - please provide.</span>
+		  </div>
+		  
+		  <div class="d-flex justify-content-center" style1="margin-top: 30px;">
 			<button class="btn btn-danger" v-on:click="updateItem" style="margin: 10px; width: 100px; font-size: 14px;">Submit</button>
 			<button class="btn btn-danger" v-on:click="deleteConfirm" style="margin: 10px; width: 100px; font-size: 14px;">Delete</button>
 		  </div>
@@ -60,7 +72,13 @@ export default {
 			pass: '',
 			description: '',
 			amount: '',
-			loading: false
+			loading: false,
+			invalidValue: false,
+			fieldsErrors: {
+				name: false,
+				pass: false,
+				description: false
+			}
 		}
 	},
 	created() {
@@ -124,6 +142,25 @@ export default {
 			})
 		},
 		updateItem() {
+			if (this.name == '') {
+				this.fieldsErrors.name = true;
+				this.invalidValue = true;
+			}				
+			
+			if (this.pass == '') {
+				this.fieldsErrors.pass = true;
+				this.invalidValue = true;
+			}				
+			
+			if (this.description == '') {
+				this.fieldsErrors.description = true;
+				this.invalidValue = true;
+			}
+			
+			if (this.invalidValue) {
+				return;
+			}
+			
 			this.loading = true;
 			this.$http.post(appConfig.URL + 'users/update', {                
 				id: this.id,
@@ -145,6 +182,12 @@ export default {
 				this.$router.push('/users');
 			})
 		},
+		clearWarning() {
+			this.fieldsErrors.name = false;
+			this.fieldsErrors.pass = false;
+			this.fieldsErrors.description = false;
+			this.invalidValue = false;
+		}
 	}
 }
 </script>
