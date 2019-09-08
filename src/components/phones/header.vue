@@ -3,7 +3,7 @@
     <form v-show="name" class="search-form" style="display: block; position: absolute; top: -55px;">
       <label>
         <input type="text" class="form-control" placeholder="Search by name"
-               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView" v-on:keyup.enter="searchName">
       </label>
 
       <div v-on:click="searchName">
@@ -16,7 +16,7 @@
     <form v-show="phone" class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
       <label>
         <input type="text" class="form-control" placeholder="Search by phone"
-               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView" v-on:keyup.enter="searchPhone">
       </label>
 
       <div v-on:click="searchPhone">
