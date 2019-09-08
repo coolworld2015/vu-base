@@ -2,7 +2,7 @@
   <div v-if="status === 'loading'">
     <div
       style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-      <img src="../../assets/img/loading.gif">
+      <img src="../../assets/img/loading.gif" alt="">
     </div>
   </div>
 
@@ -47,7 +47,6 @@
         important: true
       }
       appConfig.$on('searchQueryUsers', searchQuery => {
-        this.searchQuery = searchQuery
         let arr = [].concat(appConfig.users.items)
         let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
         this.filteredItems = items
@@ -93,12 +92,8 @@
           this.positionY = positionY + 400
         }
       },
-      onItem (item) {
-        if (this.clicked) {
-          this.clicked = false
-        } else {
-          this.clicked = true
-        }
+      onItem () {
+        this.clicked = !this.clicked
       },
       showDetails (item) {
         appConfig.user = item

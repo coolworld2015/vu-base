@@ -6,7 +6,7 @@
           <img src="../../assets/img/logo.jpg"
                style="width: 65px; height: 50px; margin-right: 10px; margin-left: 4px; margin-top: -5px;"
                v-on:click="changeView()"
-          />
+           alt=""/>
           <span style="font-weight: bold; color: white; font-size: 20px; text-shadow: #000 0.15em 0.15em 0.15em;">
 						Base 09
 					</span>
@@ -33,7 +33,7 @@
         </li>
       </ul>
 
-      <ul class="h-100 fp-nav-left" style="box-shadow: 3px 0px 10px 0px rgba(0,0,0,0.35);}">
+      <ul class="h-100 fp-nav-left" style="box-shadow: 3px 0 10px 0 rgba(0,0,0,0.35);}">
         <li class="fp-nav-item fp-nav-item-left li-border-bottom" v-on:click="changeView()">
           <span class="fp-nav-link" id="showNav" title="Base 09">09</span>
           <span class="hot-key-hint">~</span>
@@ -91,23 +91,9 @@
     },
     methods: {
       init () {
-        if (this.route === 'Payments') {
-          this.find = true
-        } else {
-          this.find = false
-        }
+        this.phones = this.route === 'Phones'
 
-        if (this.route === 'Phones') {
-          this.phones = true
-        } else {
-          this.phones = false
-        }
-
-        if (this.route === 'Audits') {
-          this.audits = true
-        } else {
-          this.audits = false
-        }
+        this.audits = this.route === 'Audits'
 
         if (this.route === 'Users') {
           this.users = true

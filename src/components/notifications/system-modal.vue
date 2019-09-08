@@ -1,9 +1,9 @@
 <template>
   <transition name="fade">
     <div v-if="modal" class="dark-screen" v-on:click="cancelGlobal($event)">
-      <fin-mon-notification v-if="modal == 'fin-mon-notification'" v-bind:params="params"
+      <fin-mon-notification v-if="modal === 'fin-mon-notification'" v-bind:params="params"
                             v-bind:cancel="cancel"></fin-mon-notification>
-      <modal-confirmation v-if="modal == 'modal-confirmation'" v-bind:params="params"
+      <modal-confirmation v-if="modal === 'modal-confirmation'" v-bind:params="params"
                           v-bind:cancel="cancel"></modal-confirmation>
     </div>
   </transition>

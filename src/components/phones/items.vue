@@ -2,7 +2,7 @@
   <div v-if="status === 'loading'">
     <div
       style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-      <img src="../../assets/img/loading.gif">
+      <img src="../../assets/img/loading.gif" alt="">
     </div>
   </div>
 
@@ -74,7 +74,6 @@
         }, 100)
       })
       appConfig.$on('searchQueryPhones', (searchQuery, searchType) => {
-        this.searchQuery = searchQuery
         let arr = [].concat(appConfig.phones.items)
         let items = [].concat(appConfig.phones.items)
 
@@ -183,12 +182,8 @@
           this.positionY = positionY + 400
         }
       },
-      onItem (item) {
-        if (this.clicked) {
-          this.clicked = false
-        } else {
-          this.clicked = true
-        }
+      onItem () {
+        this.clicked = !this.clicked
       },
       showDetails (item) {
         appConfig.phone = item

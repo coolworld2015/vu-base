@@ -1,8 +1,10 @@
 <template>
   <header class="header d-flex justify-content-center align-items-center">
     <form class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
-      <input type="text" class="form-control" placeholder="Search by user"
-             v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+      <label>
+        <input type="text" class="form-control" placeholder="Search by user"
+               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+      </label>
       <svg class="search-form-svg">
         <use xlink:href="#maginifierTool"></use>
       </svg>
@@ -16,7 +18,6 @@
       <div class="search-results-item search-results-transfer" style="width: 20%; padding-left: 40px;">Date</div>
       <div class="search-results-item search-results-sender" style="width: 15%; padding-left: 10px;">IP</div>
       <div class="search-results-item search-results-amount" style="width: 20%; padding-left: 20px;">Description</div>
-
     </div>
   </header>
 </template>

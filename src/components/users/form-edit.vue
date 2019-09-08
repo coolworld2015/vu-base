@@ -2,12 +2,12 @@
   <div v-if="loading">
     <div
       style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-      <img src="../../assets/img/loading.gif">
+      <img src="../../assets/img/loading.gif" alt="">
     </div>
   </div>
 
   <div v-else>
-    <div style="margin: auto; width: 25%; font-size: 22px; font-weight: bold; margin-bottom: 10px;">
+    <div style="width: 25%; font-size: 22px; font-weight: bold; margin: auto auto 10px;">
       <div style="text-align: center; padding-right: 40px;">{{ name }}</div>
     </div>
     <form class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">
@@ -36,8 +36,8 @@
           </div>
 
           <div class="form-group">
-            <label for="senderPatronymic">Description</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="Description"
+            <label>Description</label>
+            <input type="text" class="form-control" placeholder="Description"
                    v-model="description"
                    v-on:keypress="clearWarning"
                    v-bind:class="{ warning: fieldsErrors.description }">
@@ -47,10 +47,10 @@
           </div>
 
           <div style="font-weight: bold; font-size: 14px; color: #dc3545; margin-top: 15px; text-align: center;">
-            <span v-show="invalidValue" style="margin-left: 0px;">Value required - please provide.</span>
+            <span v-show="invalidValue" style="margin-left: 0;">Value required - please provide.</span>
           </div>
 
-          <div class="d-flex justify-content-center" style1="margin-top: 30px;">
+          <div class="d-flex justify-content-center">
             <button class="btn btn-danger" v-on:click="updateItem" style="margin: 10px; width: 100px; font-size: 14px;">
               Submit
             </button>
@@ -141,7 +141,7 @@
             }
             this.$router.push('/users')
           })
-          .catch((error) => {
+          .catch(() => {
             appConfig.notifications.items.push(this.notification)
             this.$router.push('/users')
           })
@@ -182,7 +182,7 @@
             }
             this.$router.push('/users')
           })
-          .catch((error) => {
+          .catch(() => {
             appConfig.notifications.items.push(this.notification)
             this.$router.push('/users')
           })

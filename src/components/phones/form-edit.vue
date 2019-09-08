@@ -2,12 +2,12 @@
   <div v-if="loading">
     <div
       style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-      <img src="../../assets/img/loading.gif">
+      <img src="../../assets/img/loading.gif" alt="">
     </div>
   </div>
 
   <div v-else>
-    <div style="margin: auto; width: 25%; font-size: 22px; font-weight: bold; margin-bottom: 10px;">
+    <div style="width: 25%; font-size: 22px; font-weight: bold; margin: auto auto 10px;">
       <div style="text-align: center; padding-right: 40px;">{{ name }}</div>
     </div>
     <form class="payment-form payment-form--create d-flex justify-content-stretch" autocomplete="off">
@@ -30,32 +30,32 @@
           </div>
 
           <div class="form-group">
-            <label for="senderPatronymic">Street</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="Street" v-model="street">
+            <label>Street</label>
+            <input type="text" class="form-control" placeholder="Street" v-model="street">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
 
           <div class="form-group">
-            <label for="senderPatronymic">House</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="House" v-model="house">
+            <label>House</label>
+            <input type="text" class="form-control" placeholder="House" v-model="house">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
 
           <div class="form-group">
-            <label for="senderPatronymic">Apt</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="Apt" v-model="apt">
+            <label>Apt</label>
+            <input type="text" class="form-control" placeholder="Apt" v-model="apt">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>
           </div>
 
           <div class="form-group">
-            <label for="senderPatronymic">ZIP Code</label>
-            <input type="text" class="form-control" id="senderPatronymic1" placeholder="ZIP Code" v-model="index">
+            <label>ZIP Code</label>
+            <input type="text" class="form-control" placeholder="ZIP Code" v-model="index">
             <div class="invalid-feedback">
               Будь ласка, коректно вкажіть по-батькові відправника.
             </div>

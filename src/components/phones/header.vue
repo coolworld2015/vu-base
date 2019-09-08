@@ -1,8 +1,10 @@
 <template>
   <header class="header d-flex justify-content-center align-items-center">
-    <form v-show="name" class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
-      <input type="text" class="form-control" placeholder="Search by name"
-             v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+    <form v-show="name" class="search-form" style="display: block; position: absolute; top: -55px;">
+      <label>
+        <input type="text" class="form-control" placeholder="Search by name"
+               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+      </label>
 
       <div v-on:click="searchName">
         <svg class="search-form-svg">
@@ -12,8 +14,10 @@
     </form>
 
     <form v-show="phone" class="search-form" id="search" style="display: block; position: absolute; top: -55px;">
-      <input type="text" class="form-control" placeholder="Search by phone"
-             v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+      <label>
+        <input type="text" class="form-control" placeholder="Search by phone"
+               v-model="searchQuery" v-on:click="searchClear" v-on:keyup="changeView">
+      </label>
 
       <div v-on:click="searchPhone">
         <svg class="search-form-svg">

@@ -2,13 +2,13 @@
   <div v-if="status === 'loading'">
     <div
       style="position: relative; top: 100px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
-      <img src="../../assets/img/loading.gif">
+      <img src="../../assets/img/loading.gif" alt="">
     </div>
   </div>
 
   <div v-else-if="status === 'show'" class="search-results-content">
     <div class="payment" v-for="item in items"
-         v-bind:class="{ selected: (item.id == selectedItem && clicked)}"
+         v-bind:class="{ selected: (item.id === selectedItem && clicked)}"
          v-on:click="selectItem(item.id)">
       <div class="search-results-item search-results-choose"><span class="circle"></span></div>
       <div class="search-results-item search-results-sender" style="width: 20%;">{{ item.id }}</div>
@@ -51,7 +51,6 @@
         important: true
       }
       appConfig.$on('searchQueryAudits', searchQuery => {
-        this.searchQuery = searchQuery
         let arr = [].concat(appConfig.audits.items)
         let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
         this.filteredItems = items
@@ -108,16 +107,7 @@
         appConfig.audit = item
         this.$router.push('audit-edit')
       },
-      sort (a, b) {
-        return 0
-        let nameA = a.name.toLowerCase()
-        let nameB = b.name.toLowerCase()
-        if (nameA < nameB) {
-          return -1
-        }
-        if (nameA > nameB) {
-          return 1
-        }
+      sort () {
         return 0
       }
     }
