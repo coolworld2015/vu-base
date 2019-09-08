@@ -1,33 +1,35 @@
 <template>
- <div class="wrapper">
+  <div class="wrapper">
     <navbar></navbar>
-	<div class="content">
-	  <main>
-	    <section class="search-results">
-          <div style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
+    <div class="content">
+      <main>
+        <section class="search-results">
+          <div
+            style="position: relative; top: 200px; -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; font-size:54px">
             Cash2Card
           </div>
         </section>
       </main>
-	</div></div>
+    </div>
+  </div>
 </template>
 
 <script>
-import navbar from '@/components/common/navbar';
-import appConfig from '../../main';
+  import navbar from '@/components/common/navbar'
+  import appConfig from '../../main'
 
-export default {
-  name: 'test',
-  data () {
-    return {
-      route: 'Test2'
+  export default {
+    name: 'test',
+    data () {
+      return {
+        route: 'Test2'
+      }
+    },
+    created () {
+      appConfig.route = this.route
+    },
+    components: {
+      navbar
     }
-  },
-	created() {
-		appConfig.route = this.route;			
-	},
-	components: {
-		navbar
-	}
-}
+  }
 </script>

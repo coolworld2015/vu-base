@@ -10,10 +10,14 @@
       <div class="modal-body">
         <p>Для подальшої роботи необхідно виконати наступні дії:</p>
         <ol>
-          <li>Перевірте строк дії документа, що підтверджує особу, наявність відповідної фотокартки при досягненні 25-и, 45-и річного віку</li>
-          <li>Зробіть копію паспорту громадянина України (1, 2, 3-6 стр. та сторінку з останньою реєстрацією), або іншого документа, що підтверджує особу</li>
+          <li>Перевірте строк дії документа, що підтверджує особу, наявність відповідної фотокартки при досягненні 25-и,
+            45-и річного віку
+          </li>
+          <li>Зробіть копію паспорту громадянина України (1, 2, 3-6 стр. та сторінку з останньою реєстрацією), або
+            іншого документа, що підтверджує особу
+          </li>
           <li>Завірте згідно з затвердженими в компанії вимогами усі копії документів</li>
-        </ol> 
+        </ol>
       </div>
       <div class="modal-footer fp-space-between">
         <span>
@@ -21,7 +25,8 @@
           <label for="modal_confirm">Я виконав(-ла) всі зазначені дії</label>
         </span>
         <span>
-          <button class="btn fp-btn-primary" ref="next_btn" type="button" v-bind:disabled="disable" v-on:click="confirmModal">
+          <button class="btn fp-btn-primary" ref="next_btn" type="button" v-bind:disabled="disable"
+                  v-on:click="confirmModal">
             <span>Далі</span>
           </button>
           <button class="btn fp-btn-secondary" type="button" v-on:click="cancelModal">

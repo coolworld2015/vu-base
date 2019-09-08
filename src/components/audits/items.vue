@@ -28,12 +28,12 @@
 </template>
 
 <script>
-  import Vue from 'vue';
-  import appConfig from '../../main';
+  import Vue from 'vue'
+  import appConfig from '../../main'
 
   export default {
     name: 'audits-items',
-    data() {
+    data () {
       return {
         items: [],
         filteredItems: [],
@@ -44,81 +44,81 @@
         selectedItem: ''
       }
     },
-    created() {
-		this.fetchData();
-		this.notification = {
-			title: 'Something went wrong',
-			message: 'Server responded with status code error',
-			important: true
-		}
-		appConfig.$on('searchQueryAudits', searchQuery => {
-			this.searchQuery = searchQuery;
-			let arr = [].concat(appConfig.audits.items);
-			let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
-			this.filteredItems = items;
-			this.items = items.slice(0, 20);
-			this.positionY = 0;
-			this.recordsCount = 20;
+    created () {
+      this.fetchData()
+      this.notification = {
+        title: 'Something went wrong',
+        message: 'Server responded with status code error',
+        important: true
+      }
+      appConfig.$on('searchQueryAudits', searchQuery => {
+        this.searchQuery = searchQuery
+        let arr = [].concat(appConfig.audits.items)
+        let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1)
+        this.filteredItems = items
+        this.items = items.slice(0, 20)
+        this.positionY = 0
+        this.recordsCount = 20
 
-			appConfig.$emit('itemsCount', items.length);
-			if (searchQuery == '') {
-			  this.items = appConfig.audits.items.slice(0, 20);
-			  this.filteredItems = appConfig.audits.items;
-			}
-		})
+        appConfig.$emit('itemsCount', items.length)
+        if (searchQuery == '') {
+          this.items = appConfig.audits.items.slice(0, 20)
+          this.filteredItems = appConfig.audits.items
+        }
+      })
     },
     methods: {
-      fetchData() {
+      fetchData () {
         this.$http.get(appConfig.URL + 'audit/get', {headers: {'Authorization': appConfig.access_token}})
           .then(result => {
-            appConfig.audits.items = result.data;
-            this.items = result.data.slice(0, 20);
-            this.filteredItems = result.data;
-            this.status = 'show';
-            appConfig.$emit('itemsCount', result.data.length);
+            appConfig.audits.items = result.data
+            this.items = result.data.slice(0, 20)
+            this.filteredItems = result.data
+            this.status = 'show'
+            appConfig.$emit('itemsCount', result.data.length)
             setTimeout(() => {
               document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
-            }, 100);
+            }, 100)
           }).catch((error) => {
-				appConfig.notifications.items.push(this.notification);
-				this.status = 'show';
-				this.$router.push('/login');
+          appConfig.notifications.items.push(this.notification)
+          this.status = 'show'
+          this.$router.push('/login')
         })
       },
-      handleScroll() {
-        let position = document.querySelector('.search-results-content').scrollTop;
-        let items, positionY, recordsCount;
-        recordsCount = this.recordsCount;
-        positionY = this.positionY;
-        items = this.filteredItems.slice(0, recordsCount);
+      handleScroll () {
+        let position = document.querySelector('.search-results-content').scrollTop
+        let items, positionY, recordsCount
+        recordsCount = this.recordsCount
+        positionY = this.positionY
+        items = this.filteredItems.slice(0, recordsCount)
 
         if (position > positionY) {
-          this.items = items;
-          this.recordsCount = recordsCount + 10;
-          this.positionY = positionY + 400;
+          this.items = items
+          this.recordsCount = recordsCount + 10
+          this.positionY = positionY + 400
         }
       },
-      selectItem(id) {
-        this.selectedItem = id;
-        this.clicked = !this.clicked;
+      selectItem (id) {
+        this.selectedItem = id
+        this.clicked = !this.clicked
       },
-      onItem() {
-        this.clicked = !this.clicked;
+      onItem () {
+        this.clicked = !this.clicked
       },
-      showDetails(item) {
-        appConfig.audit = item;
-        this.$router.push('audit-edit');
+      showDetails (item) {
+        appConfig.audit = item
+        this.$router.push('audit-edit')
       },
-      sort(a, b) {
-		return 0;
-        let nameA = a.id.toLowerCase(), nameB = b.id.toLowerCase();
+      sort (a, b) {
+        return 0
+        let nameA = a.id.toLowerCase(), nameB = b.id.toLowerCase()
         if (nameA < nameB) {
           return -1
         }
         if (nameA > nameB) {
           return 1
         }
-        return 0;
+        return 0
       }
     }
   }

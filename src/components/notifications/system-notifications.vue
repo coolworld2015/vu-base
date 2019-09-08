@@ -1,11 +1,11 @@
 <template>
   <div class="message-out-of-panel">
     <notification-item v-for="item in items"
-       :key="item.id"
-       :title="item.title"
-       :message="item.message"
-       :time="item.time"
-       :important="item.important">
+                       :key="item.id"
+                       :title="item.title"
+                       :message="item.message"
+                       :time="item.time"
+                       :important="item.important">
     </notification-item>
   </div>
 </template>
@@ -18,7 +18,7 @@
     name: 'system-notifications',
     data () {
       return {
-        items: [],
+        items: []
       }
     },
     created () {
