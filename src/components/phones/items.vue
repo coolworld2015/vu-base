@@ -117,39 +117,39 @@
               appConfig.http = true
               appConfig.$emit('clearHeader')
             }).catch(() => {
-            appConfig.notifications.items.push(this.notification)
-            this.status = 'show'
-            appConfig.http = true
-          })
-        }
-      })
-        appConfig.$on('searchPhone', searchQuery => {
-          this.status = 'loading'
-          if (!appConfig.http) {
-            return
-          }
-
-          if (searchQuery !== '') {
-            appConfig.http = false
-            this.$http.get(appConfig.URL + 'items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
-              .then(result => {
-                appConfig.phones.items = result.data.sort(this.sort)
-                this.items = result.data.sort(this.sort).slice(0, 20)
-                this.filteredItems = result.data.sort(this.sort)
-                appConfig.$emit('itemsCount', result.data.length)
-                setTimeout(() => {
-                  document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
-                }, 100)
-                this.status = 'show'
-                appConfig.http = true
-                appConfig.$emit('clearHeader')
-              }).catch((error) => {
               appConfig.notifications.items.push(this.notification)
               this.status = 'show'
               appConfig.http = true
             })
-          }
-        })
+        }
+      })
+      appConfig.$on('searchPhone', searchQuery => {
+        this.status = 'loading'
+        if (!appConfig.http) {
+          return
+        }
+
+        if (searchQuery !== '') {
+          appConfig.http = false
+          this.$http.get(appConfig.URL + 'items/findByPhone/' + searchQuery, {headers: {'Authorization': appConfig.access_token}})
+            .then(result => {
+              appConfig.phones.items = result.data.sort(this.sort)
+              this.items = result.data.sort(this.sort).slice(0, 20)
+              this.filteredItems = result.data.sort(this.sort)
+              appConfig.$emit('itemsCount', result.data.length)
+              setTimeout(() => {
+                document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
+              }, 100)
+              this.status = 'show'
+              appConfig.http = true
+              appConfig.$emit('clearHeader')
+            }).catch(() => {
+              appConfig.notifications.items.push(this.notification)
+              this.status = 'show'
+              appConfig.http = true
+            })
+        }
+      })
     },
     methods: {
       fetchData () {
@@ -164,15 +164,15 @@
             setTimeout(() => {
               document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
             }, 100)
-          }).catch((error) => {
-          appConfig.notifications.items.push(this.notification)
-          this.status = 'show'
-          this.$router.push('/login')
-        })
+          }).catch(() => {
+            appConfig.notifications.items.push(this.notification)
+            this.status = 'show'
+            this.$router.push('/login')
+          })
       },
       handleScroll () {
-        var position = document.querySelector('.search-results-content').scrollTop
-        var items, positionY, recordsCount
+        let position = document.querySelector('.search-results-content').scrollTop
+        let items, positionY, recordsCount
         recordsCount = this.recordsCount
         positionY = this.positionY
         items = this.filteredItems.slice(0, recordsCount)
@@ -195,7 +195,8 @@
         this.$router.push('phone-edit')
       },
       sort (a, b) {
-        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+        let nameA = a.name.toLowerCase()
+        let nameB = b.name.toLowerCase()
         if (nameA < nameB) {
           return -1
         }

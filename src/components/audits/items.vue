@@ -78,11 +78,11 @@
             setTimeout(() => {
               document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
             }, 100)
-          }).catch((error) => {
-          appConfig.notifications.items.push(this.notification)
-          this.status = 'show'
-          this.$router.push('/login')
-        })
+          }).catch(() => {
+            appConfig.notifications.items.push(this.notification)
+            this.status = 'show'
+            this.$router.push('/login')
+          })
       },
       handleScroll () {
         let position = document.querySelector('.search-results-content').scrollTop
@@ -110,7 +110,8 @@
       },
       sort (a, b) {
         return 0
-        let nameA = a.id.toLowerCase(), nameB = b.id.toLowerCase()
+        let nameA = a.name.toLowerCase()
+        let nameB = b.name.toLowerCase()
         if (nameA < nameB) {
           return -1
         }

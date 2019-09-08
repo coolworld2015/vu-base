@@ -74,15 +74,15 @@
             setTimeout(() => {
               document.querySelector('.search-results-content').addEventListener('scroll', this.handleScroll)
             }, 100)
-          }).catch((error) => {
-          appConfig.notifications.items.push(this.notification)
-          this.status = 'show'
-          this.$router.push('login')
-        })
+          }).catch(() => {
+            appConfig.notifications.items.push(this.notification)
+            this.status = 'show'
+            this.$router.push('login')
+          })
       },
       handleScroll () {
-        var position = document.querySelector('.search-results-content').scrollTop
-        var items, positionY, recordsCount
+        let position = document.querySelector('.search-results-content').scrollTop
+        let items, positionY, recordsCount
         recordsCount = this.recordsCount
         positionY = this.positionY
         items = this.filteredItems.slice(0, recordsCount)
@@ -105,7 +105,8 @@
         this.$router.push('user-edit')
       },
       sort (a, b) {
-        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+        let nameA = a.name.toLowerCase()
+        let nameB = b.name.toLowerCase()
         if (nameA < nameB) {
           return -1
         }

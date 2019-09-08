@@ -83,13 +83,7 @@
         audits: null,
         users: null,
         login: null,
-        logout: null,
-        test: null,
-        test1: null,
-        test2: null,
-        test3: null,
-        test4: null,
-        test5: null
+        logout: null
       }
     },
     created () {
@@ -120,43 +114,6 @@
         } else {
           this.users = false
         }
-
-        if (this.route === 'Test') {
-          this.test = true
-        } else {
-          this.test = false
-        }
-
-        if (this.route === 'Test1') {
-          this.test1 = true
-        } else {
-          this.test1 = false
-        }
-
-        if (this.route === 'Test2') {
-          this.test2 = true
-        } else {
-          this.test2 = false
-        }
-
-        if (this.route === 'Test3') {
-          this.test3 = true
-        } else {
-          this.test3 = false
-        }
-
-        if (this.route === 'Test4') {
-          this.test4 = true
-        } else {
-          this.test4 = false
-        }
-
-        if (this.route === 'Test5') {
-          this.test5 = true
-        } else {
-          this.test5 = false
-        }
-
       },
       changeView () {
         if (this.isActive !== false) {
@@ -164,10 +121,6 @@
         } else {
           this.isActive = true
         }
-      },
-      searchClear () {
-        this.searchQuery = ''
-        bus.$emit('searchQuery', this.searchQuery)
       },
       changeRoute (route) {
         event.preventDefault()

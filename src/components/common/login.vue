@@ -58,7 +58,7 @@
             this.error = false
             this.$router.push('/phones')
           })
-          .catch((error) => {
+          .catch(() => {
             this.loading = false
             this.error = true
           })
