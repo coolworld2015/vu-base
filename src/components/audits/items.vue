@@ -28,7 +28,6 @@
 </template>
 
 <script>
-  import Vue from 'vue'
   import appConfig from '../../main'
 
   export default {
@@ -54,14 +53,14 @@
       appConfig.$on('searchQueryAudits', searchQuery => {
         this.searchQuery = searchQuery
         let arr = [].concat(appConfig.audits.items)
-        let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1)
+        let items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
         this.filteredItems = items
         this.items = items.slice(0, 20)
         this.positionY = 0
         this.recordsCount = 20
 
         appConfig.$emit('itemsCount', items.length)
-        if (searchQuery == '') {
+        if (searchQuery === '') {
           this.items = appConfig.audits.items.slice(0, 20)
           this.filteredItems = appConfig.audits.items
         }

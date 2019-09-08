@@ -18,8 +18,8 @@
   export default {
     name: 'audit-edit',
     components: {
-      navbar: navbar,
-      auditFormEdit: auditFormEdit
+      navbar,
+      auditFormEdit
     }
   }
 </script>

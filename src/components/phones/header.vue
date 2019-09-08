@@ -56,13 +56,13 @@
     },
     methods: {
       changeSearch (value) {
-        if (value == 'name') {
+        if (value === 'name') {
           this.name = true
           this.phone = false
           this.searchType = 'name'
         }
 
-        if (value == 'phone') {
+        if (value === 'phone') {
           this.name = false
           this.phone = true
           this.searchType = 'phone'

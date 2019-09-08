@@ -189,7 +189,6 @@
 
 <script>
   import appConfig from '../../main'
-  import navbar from '@/components/common/navbar'
 
   export default {
     name: 'audit-edit',
@@ -214,8 +213,6 @@
           if (appConfig.audit) {
             this.id = appConfig.audit.id
             this.name = appConfig.audit.name
-            //this.pass = appConfig.user.pass;
-            //this.description = appConfig.user.description;
           }
         }
       },

@@ -42,17 +42,3 @@
     }
   }
 </script>
-
-<!--
-
-		<div class="search-results-header">
-			<div class="search-results-item search-results-choose"></div>
-			<div class="search-results-item search-results-sender" style="left: 25px;">ID</div>
-			<div class="search-results-item search-results-product">Пользователь</div>
-			<div class="search-results-item search-results-sender" style="left: 25px;">Дата</div>
-			<div class="search-results-item search-results-transfer" style="left: -15px;">Описание</div>
-			<div class="search-results-item search-results-amount" style="left: -25px;">Адрес</div>
-			<div class="search-results-item search-results-result">Индекс</div>
-		</div>
-
--->

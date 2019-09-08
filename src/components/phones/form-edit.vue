@@ -77,7 +77,6 @@
 
 <script>
   import appConfig from '../../main'
-  import navbar from '@/components/common/navbar'
 
   export default {
     name: 'users-edit',

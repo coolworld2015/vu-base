@@ -34,7 +34,6 @@
 </template>
 
 <script>
-  import Vue from 'vue'
   import appConfig from '../../main'
 
   export default {
@@ -79,12 +78,12 @@
         let arr = [].concat(appConfig.phones.items)
         let items = [].concat(appConfig.phones.items)
 
-        if (searchType == 'name') {
-          items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1)
+        if (searchType === 'name') {
+          items = arr.filter((el) => el.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
         }
 
-        if (searchType == 'phone') {
-          items = arr.filter((el) => el.phone.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1)
+        if (searchType === 'phone') {
+          items = arr.filter((el) => el.phone.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
         }
 
         this.filteredItems = items
@@ -92,7 +91,7 @@
         this.positionY = 0
         this.recordsCount = 20
         appConfig.$emit('itemsCount', items.length)
-        if (searchQuery == '') {
+        if (searchQuery === '') {
           this.items = appConfig.phones.items.slice(0, 20)
           this.filteredItems = appConfig.phones.items
         }
@@ -117,13 +116,13 @@
               this.status = 'show'
               appConfig.http = true
               appConfig.$emit('clearHeader')
-            }).catch((error) => {
+            }).catch(() => {
             appConfig.notifications.items.push(this.notification)
             this.status = 'show'
             appConfig.http = true
           })
         }
-      }),
+      })
         appConfig.$on('searchPhone', searchQuery => {
           this.status = 'loading'
           if (!appConfig.http) {

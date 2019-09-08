@@ -18,8 +18,8 @@
   export default {
     name: 'phone-edit',
     components: {
-      navbar: navbar,
-      phoneFormEdit: phoneFormEdit
+      navbar,
+      phoneFormEdit
     }
   }
 </script>
